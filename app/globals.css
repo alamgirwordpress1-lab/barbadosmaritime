@@ -1,26 +1,243 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* BMSR brand tokens — sampled from the existing site, unchanged. */
+@theme {
+  --color-brand-blue: #3d7cc8;
+  --color-brand-blue-deep: #2f68ae; /* hover/pressed shade of the brand blue */
+  --color-brand-yellow: #fec725;
+  --color-brand-yellow-deep: #f2b705; /* hover shade of the brand yellow */
+  --color-ink: #212121;
+  --color-body: #616161;
+  --color-mist: #f4f4f4;
+  --color-night: #1a1a1a;
+  --color-line: #e5e5e5;
+
+  --shadow-float: 0 24px 50px -28px rgb(26 26 26 / 0.45);
+  --shadow-card: 0 10px 30px -18px rgb(26 26 26 / 0.35);
+
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-display: var(--font-quicksand), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-nunito), ui-sans-serif, system-ui, sans-serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@keyframes wave-drift {
+  to {
+    transform: translate3d(-50%, 0, 0);
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@keyframes marquee {
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+@layer base {
+  html {
+    color-scheme: light;
+    scroll-padding-top: 6rem;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background: #fff;
+    color: var(--color-body);
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    line-height: 1.75;
+    text-rendering: optimizeLegibility;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    color: var(--color-ink);
+    font-weight: 700;
+    line-height: 1.2;
+    text-wrap: balance;
+  }
+
+  :focus-visible {
+    outline: 3px solid var(--color-brand-blue);
+    outline-offset: 3px;
+  }
+
+  /* Lenis marks iframes non-interactive while smoothing; keep the office map usable. */
+  .lenis.lenis-smooth iframe.allow-pointer {
+    pointer-events: auto;
+  }
+}
+
+@layer components {
+  /* Content width shared by every section and the footer (1440px frame, 32px gutters). */
+  .container-site {
+    width: 100%;
+    max-width: 90rem;
+    margin-inline: auto;
+    padding-inline: 1.25rem;
+  }
+  @media (min-width: 640px) {
+    .container-site {
+      padding-inline: 2rem;
+    }
+  }
+
+  /* Full-width frame (header and top bars): spans the screen with side padding only. */
+  .container-full {
+    width: 100%;
+    padding-inline: 1.25rem;
+  }
+  @media (min-width: 640px) {
+    .container-full {
+      padding-inline: 2rem;
+    }
+  }
+  @media (min-width: 1280px) {
+    .container-full {
+      padding-inline: 3.5rem;
+    }
+  }
+
+  /* Small uppercase label above a heading. */
+  .eyebrow {
+    display: block;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--color-brand-blue);
+  }
+
+  /* Rectangular button with a fill that slides up on hover. */
+  .btn {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    min-height: 3.25rem;
+    padding: 0 2rem;
+    font-size: 0.75rem;
+    font-weight: 800;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    line-height: 1;
+    transition: color 0.4s var(--ease-out-expo);
+  }
+  .btn::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: var(--sweep);
+    transform: translateY(101%);
+    transition: transform 0.5s var(--ease-out-expo);
+  }
+  .btn:hover::before {
+    transform: translateY(0);
+  }
+  .btn svg {
+    transition: transform 0.4s var(--ease-out-expo);
+  }
+  .btn:hover svg {
+    transform: translateX(4px);
+  }
+  .btn-blue {
+    --sweep: var(--color-brand-blue-deep);
+    background: var(--color-brand-blue);
+    color: #fff;
+  }
+  .btn-yellow {
+    --sweep: #fff;
+    background: var(--color-brand-yellow);
+    color: var(--color-ink);
+  }
+  .btn-outline {
+    --sweep: var(--color-ink);
+    min-height: 2.75rem;
+    padding: 0 1.5rem;
+    color: var(--color-ink);
+    box-shadow: inset 0 0 0 1px var(--color-line);
+  }
+  .btn-outline:hover {
+    color: #fff;
+  }
+
+  /* Endless horizontal ticker: the track holds two identical sets. */
+  .marquee-track {
+    display: flex;
+    width: max-content;
+    animation: marquee var(--marquee-duration, 40s) linear infinite;
+  }
+  .marquee:hover .marquee-track {
+    animation-play-state: paused;
+  }
+
+  /* Text link with an arrow that nudges on hover. */
+  .link-arrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.625rem;
+    font-size: 0.75rem;
+    font-weight: 800;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--color-brand-blue);
+    transition: color 0.3s;
+  }
+  .link-arrow svg {
+    transition: transform 0.4s var(--ease-out-expo);
+  }
+  .link-arrow:hover {
+    color: var(--color-brand-blue-deep);
+  }
+  .link-arrow:hover svg {
+    transform: translateX(4px);
+  }
+}
+
+/* Start states for scroll animations (only when motion is allowed, see layout.tsx). */
+html.motion [data-reveal],
+html.motion [data-stagger] > *,
+html.motion [data-hero-ui],
+html.motion [data-slide-text] [data-fade] {
+  opacity: 0;
+}
+html.motion [data-split] {
+  visibility: hidden;
+}
+html.motion [data-clip] {
+  clip-path: inset(100% 0 0 0);
+}
+html.motion [data-frame-reveal] {
+  clip-path: inset(10% 8% 10% 8% round 28px);
+}
+html.motion [data-slide-text] [data-word] {
+  transform: translateY(115%);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track {
+    animation: none;
+    width: auto;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .marquee-track > [aria-hidden="true"] {
+    display: none;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
