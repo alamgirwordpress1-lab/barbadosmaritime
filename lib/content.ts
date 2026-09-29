@@ -100,19 +100,21 @@ export const heroSlides: HeroSlide[] = [
   },
   {
     eyebrow: "Barbados Maritime Ship Registry",
+    title: ["Navigational guidance for Barbadian-flagged", "vessels operating in the Strait of Hormuz."],
+    cta: { label: "Guidance", href: "/navigational-guidance" },
+    // Clip: "A Footage of a Cargo Ship Floating on the Sea" by Maria Marin, Pexels (free licence).
+    video: "/videos/cargo-ship-sailing.mp4",
+    image: "/images/slides/slide-cargo-ship-poster.jpg",
+    imageAlt: "Cargo ship sailing on the open sea",
+    focus: "50% 50%",
+  },
+  {
+    eyebrow: "Barbados Maritime Ship Registry",
     title: ["Who We Are", "& What We Do"],
     cta: { label: "Learn More", href: "/about-us" },
     image: "/images/slides/slide-yacht.jpg",
     imageAlt: "Motor yacht under way at sea",
     focus: "62% 55%",
-  },
-  {
-    eyebrow: "Barbados Maritime Ship Registry",
-    title: ["Navigational guidance for Barbadian-flagged", "vessels operating in the Strait of Hormuz."],
-    cta: { label: "Guidance", href: "/navigational-guidance" },
-    image: "/images/slides/slide-sea.jpg",
-    imageAlt: "Calm open sea under a clear sky",
-    focus: "50% 55%",
   },
 ];
 

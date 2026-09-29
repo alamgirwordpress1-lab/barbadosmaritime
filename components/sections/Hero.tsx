@@ -65,6 +65,14 @@ export function Hero() {
       const q = gsap.utils.selector(root);
       const layers = q("[data-slide-layer]");
       const imgs = q("[data-slide-img]");
+      const videos = layers.map((layer) => layer.querySelector("video"));
+      videos.forEach((v) => v && (v.muted = true)); // autoplay needs muted; React doesn't reliably set it
+      const play = (i: number, restart = false) => {
+        const v = videos[i];
+        if (!v || reduce) return;
+        if (restart) v.currentTime = 0;
+        v.play().catch(() => {});
+      };
       const texts = q("[data-slide-text]");
       const allFills = q("[data-tab-fill]");
       const fills = (i: number) => q(`[data-tab-fill="${i}"]`);
@@ -105,12 +113,14 @@ export function Hero() {
         gsap.set(allFills, { scaleX: 0 });
         if (reduce) gsap.set(fills(to), { scaleX: 1 });
         gsap.set(layers[from], { zIndex: 1 });
+        play(to, true);
 
         tl = gsap
           .timeline({
             onComplete: () => {
               gsap.set(layers[from], { autoAlpha: 0, zIndex: 0 });
               gsap.set(imgs[from], { xPercent: 0 });
+              videos[from]?.pause();
               startSlide(to);
             },
           })
@@ -152,6 +162,7 @@ export function Hero() {
       };
 
       api.current = { go: safe(go), pause, resume, index: () => index };
+      play(0);
 
       if (reduce) {
         gsap.set(fills(0), { scaleX: 1 });
@@ -172,8 +183,14 @@ export function Hero() {
         trigger: root.current,
         start: "top top",
         end: "bottom top",
-        onLeave: pause,
-        onEnterBack: resume,
+        onLeave: () => {
+          pause();
+          videos[index]?.pause();
+        },
+        onEnterBack: () => {
+          resume();
+          play(index);
+        },
       });
     },
     { scope: root },
@@ -221,7 +238,6 @@ export function Hero() {
               <video
                 src={slide.video}
                 poster={slide.image}
-                autoPlay
                 muted
                 loop
                 playsInline
