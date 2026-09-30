@@ -15,18 +15,18 @@ function stepSize(el: HTMLElement) {
   return card.offsetWidth + (parseFloat(getComputedStyle(el).columnGap) || 0);
 }
 
-/** "15th June 2026" as a yellow date tile: day large, month and year small. */
+/** "15th June 2026" as a gold date tile: day large, month and year small. */
 function DateTile({ date, dateTime }: { date: string; dateTime: string }) {
   const m = date.match(/^(\d+)(\D*?)\s+(\S+)\s+(\d{4})$/);
   return (
     <time
       dateTime={dateTime}
-      className="absolute -top-10 right-4 z-10 flex min-w-[4.5rem] flex-col items-center rounded-2xl bg-brand-yellow px-3 py-2.5 text-center text-ink shadow-[0_14px_26px_-14px_rgb(26_26_26/0.55)] ring-4 ring-white"
+      className="absolute -top-10 right-4 z-10 flex min-w-[4.5rem] flex-col items-center rounded-lg bg-gold px-3 py-2.5 text-center text-abyss shadow-[0_14px_26px_-14px_rgb(0_0_0/0.7)] ring-4 ring-harbor"
     >
       {m ? (
         <>
-          <span className="font-display text-2xl font-bold leading-none">{m[1]}</span>
-          <span className="mt-1 text-[0.625rem] font-extrabold uppercase tracking-[0.14em]">
+          <span className="font-display text-3xl leading-none">{m[1]}</span>
+          <span className="mt-1 text-[0.5625rem] font-bold uppercase tracking-[0.18em]">
             {m[3].slice(0, 3)} {m[4]}
           </span>
         </>
@@ -39,8 +39,8 @@ function DateTile({ date, dateTime }: { date: string; dateTime: string }) {
 
 function BulletinCard({ post }: { post: Post }) {
   return (
-    <article className="group relative flex h-full flex-col rounded-3xl bg-white p-3 shadow-[0_18px_40px_-30px_rgb(26_26_26/0.6)] ring-1 ring-line transition-[translate,box-shadow] duration-500 ease-[var(--ease-out-expo)] hover:-translate-y-2 hover:shadow-float">
-      <div className="relative aspect-[16/11] overflow-hidden rounded-2xl bg-mist">
+    <article className="group relative flex h-full flex-col rounded-xl border border-rule bg-harbor p-3 transition-[translate,border-color,box-shadow] duration-500 ease-[var(--ease-out-expo)] hover:-translate-y-2 hover:border-teal/40 hover:shadow-float">
+      <div className="relative aspect-[16/11] overflow-hidden rounded-lg bg-deep">
         <Image
           src={post.image}
           alt=""
@@ -49,36 +49,36 @@ function BulletinCard({ post }: { post: Post }) {
           sizes="(min-width: 1024px) 460px, (min-width: 640px) 50vw, 85vw"
           className="object-cover transition-transform duration-[1.2s] ease-[var(--ease-out-expo)] group-hover:scale-[1.06]"
         />
-        <span className="absolute left-3 top-3 rounded-full bg-white/85 px-3 py-1 text-[0.6875rem] font-extrabold uppercase tracking-[0.14em] text-brand-blue backdrop-blur">
+        <span className="absolute left-3 top-3 rounded-full bg-abyss/70 px-3 py-1 text-[0.625rem] font-semibold uppercase tracking-[0.22em] text-teal backdrop-blur">
           {post.category}
         </span>
       </div>
 
       <div className="relative flex flex-1 flex-col px-4 pb-4 pt-7">
         <DateTile date={post.date} dateTime={post.dateTime} />
-        <p className="flex items-center gap-2 text-[0.8125rem] font-bold text-body">
-          <span className="grid size-6 place-items-center rounded-full bg-brand-blue/10 text-brand-blue">
+        <p className="flex items-center gap-2 text-xs font-semibold text-fog">
+          <span className="grid size-6 place-items-center rounded-full border border-rule text-teal">
             <User className="size-3.5" aria-hidden="true" />
           </span>
           {post.author}
         </p>
-        <h3 className="mt-3 line-clamp-3 text-lg leading-snug text-pretty">
+        <h3 className="mt-3 line-clamp-3 text-2xl leading-tight text-pretty">
           <a
             href={post.href}
             draggable={false}
-            className="transition-colors after:absolute after:inset-0 after:rounded-3xl group-hover:text-brand-blue"
+            className="transition-colors after:absolute after:inset-0 after:rounded-xl group-hover:text-teal"
           >
             {post.title}
           </a>
         </h3>
-        <p className="mb-6 mt-2.5 line-clamp-2 text-[0.9375rem] leading-6">{post.excerpt}</p>
+        <p className="mb-6 mt-3 line-clamp-2 text-sm leading-6">{post.excerpt}</p>
         <span
           aria-hidden="true"
-          className="mt-auto inline-flex w-fit items-center gap-2.5 rounded-full bg-mist py-1.5 pl-4 pr-1.5 text-[0.6875rem] font-extrabold uppercase tracking-[0.14em] text-brand-blue transition-colors duration-500 group-hover:bg-brand-blue group-hover:text-white"
+          className="mt-auto inline-flex w-fit items-center gap-2.5 text-xs font-semibold text-haze transition-colors duration-500 group-hover:text-teal"
         >
           Read More
-          <span className="grid size-7 place-items-center rounded-full bg-white text-brand-blue transition-transform duration-500 ease-[var(--ease-out-expo)] group-hover:rotate-45">
-            <ArrowUpRight className="size-3.5" strokeWidth={2.5} />
+          <span className="grid size-8 place-items-center rounded-full border border-rule transition-[rotate,background-color,border-color,color] duration-500 ease-[var(--ease-out-expo)] group-hover:rotate-45 group-hover:border-teal group-hover:bg-teal group-hover:text-abyss">
+            <ArrowUpRight className="size-3.5" />
           </span>
         </span>
       </div>
@@ -193,23 +193,21 @@ export function Bulletins() {
   };
 
   const arrow =
-    "grid size-12 place-items-center rounded-full border border-ink/10 bg-white text-ink shadow-[0_8px_18px_-12px_rgb(26_26_26/0.5)] transition-colors duration-300 hover:border-brand-blue hover:bg-brand-blue hover:text-white disabled:pointer-events-none disabled:opacity-35";
+    "grid size-11 place-items-center rounded-full border border-white/25 text-foam transition-colors duration-300 hover:border-teal hover:bg-teal hover:text-abyss disabled:pointer-events-none disabled:opacity-30";
 
   return (
-    <section aria-labelledby="bulletins-heading" className="relative isolate overflow-hidden bg-mist py-24 lg:py-28">
-      <span aria-hidden="true" className="absolute -right-40 -top-40 -z-10 size-[36rem] rounded-full bg-brand-blue/10 blur-3xl" />
-      <span aria-hidden="true" className="absolute -left-48 top-1/4 -z-10 size-[26rem] rounded-full bg-brand-yellow/20 blur-3xl" />
+    <section aria-labelledby="bulletins-heading" className="relative isolate overflow-hidden bg-abyss py-24 lg:py-32">
+      <span aria-hidden="true" className="absolute -right-40 -top-40 -z-10 size-[36rem] rounded-full bg-teal/10 blur-3xl" />
+      <span aria-hidden="true" className="absolute -left-48 top-1/4 -z-10 size-[26rem] rounded-full bg-gold/10 blur-3xl" />
 
       <div className="container-site">
         <div className="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
           <div>
-            <span data-reveal className="eyebrow">
+            <p data-reveal className="eyebrow">
               {labels.news}
-            </span>
-            <h2 id="bulletins-heading" data-split className="mt-3 text-[2.25rem] leading-[1.1] sm:text-5xl">
-              {headingA}
-              <br />
-              <span className="text-brand-blue">{headingB}</span>
+            </p>
+            <h2 id="bulletins-heading" data-split className="mt-5 text-[2.25rem] sm:text-5xl">
+              {headingA} <span className="accent">{headingB}</span>
             </h2>
           </div>
           <div data-reveal className="flex flex-wrap items-center gap-3">
@@ -219,9 +217,9 @@ export function Bulletins() {
             <button type="button" onClick={() => step(1)} disabled={edges.end} aria-label="Next bulletins" className={arrow}>
               <ChevronRight className="size-5" aria-hidden="true" />
             </button>
-            <a href={bulletins.viewAll.href} className="btn btn-blue ml-2 rounded-full">
+            <a href={bulletins.viewAll.href} className="link-arrow ml-3">
               {bulletins.viewAll.label}
-              <ArrowRight className="size-4" strokeWidth={2.5} aria-hidden="true" />
+              <ArrowRight className="size-4" aria-hidden="true" />
             </a>
           </div>
         </div>
@@ -264,7 +262,7 @@ export function Bulletins() {
           {/* "Drag" bubble: the outer span follows the pointer (GSAP), the inner one scales in and out (CSS) */}
           <span ref={bubble} aria-hidden="true" className="pointer-events-none absolute left-0 top-0 z-20 -ml-10 -mt-10 size-20">
             <span
-              className={`grid size-full place-items-center rounded-full bg-brand-yellow text-[0.6875rem] font-extrabold uppercase tracking-[0.18em] text-ink shadow-[0_14px_30px_-12px_rgb(26_26_26/0.5)] transition-[scale,opacity] duration-300 ${
+              className={`grid size-full place-items-center rounded-full bg-teal text-[0.625rem] font-bold uppercase tracking-[0.2em] text-abyss shadow-[0_14px_30px_-12px_rgb(0_0_0/0.7)] transition-[scale,opacity] duration-300 ${
                 bubbleOn ? (dragging ? "scale-75 opacity-100" : "scale-100 opacity-100") : "scale-0 opacity-0"
               }`}
             >
@@ -274,8 +272,8 @@ export function Bulletins() {
         </div>
 
         {/* Scroll position */}
-        <div aria-hidden="true" className="mt-12 h-[3px] overflow-hidden rounded-full bg-ink/10">
-          <span ref={thumb} className="block h-full rounded-full bg-brand-yellow transition-transform duration-200" />
+        <div aria-hidden="true" className="mt-12 h-px overflow-hidden bg-rule">
+          <span ref={thumb} className="block h-full bg-gradient-to-r from-teal to-gold transition-transform duration-200" />
         </div>
       </div>
     </section>

@@ -29,7 +29,7 @@ function Seal({ className = "" }: { className?: string }) {
         <defs>
           <path id={id} d="M100,100 m-76,0 a76,76 0 1,1 152,0 a76,76 0 1,1 -152,0" />
         </defs>
-        <circle cx="100" cy="100" r="97" fill="none" stroke="rgb(254 199 37 / 0.55)" strokeWidth="1.5" />
+        <circle cx="100" cy="100" r="97" fill="none" stroke="rgb(233 196 106 / 0.55)" strokeWidth="1.5" />
         <circle cx="100" cy="100" r="58" fill="none" stroke="rgb(255 255 255 / 0.18)" strokeWidth="1" />
         <text fill="rgb(255 255 255 / 0.85)" fontSize="12.5" fontWeight="700" letterSpacing="1.5">
           <textPath href={`#${id}`} textLength={470} lengthAdjust="spacing">
@@ -37,7 +37,7 @@ function Seal({ className = "" }: { className?: string }) {
           </textPath>
         </text>
       </svg>
-      <span className="absolute inset-[27%] grid place-items-center rounded-full bg-brand-yellow text-ink shadow-[0_0_30px_rgb(254_199_37/0.35)]">
+      <span className="absolute inset-[27%] grid place-items-center rounded-full bg-gold text-abyss shadow-[0_0_30px_rgb(233_196_106/0.35)]">
         <Anchor className="size-[46%]" strokeWidth={2.25} />
       </span>
     </div>
@@ -99,7 +99,7 @@ function OfficeStatus() {
         <span className={`relative size-2 rounded-full ${clock?.open ? "bg-emerald-400" : "bg-white/40"}`} />
       </span>
       {clock ? (clock.open ? "Office open" : "Office closed") : "London office"}
-      <span className="font-display text-sm font-bold tabular-nums text-brand-yellow">{clock?.time ?? "--:--"}</span>
+      <span className="font-display text-base tabular-nums text-gold">{clock?.time ?? "--:--"}</span>
       <span className="sr-only">London time</span>
     </p>
   );
@@ -174,11 +174,11 @@ export function HeroPanel() {
             />
             <div
               aria-hidden="true"
-              className="absolute left-0 top-[7px] h-[2px] bg-brand-yellow shadow-[0_0_10px_rgb(254_199_37/0.6)]"
+              className="absolute left-0 top-[7px] h-[2px] bg-gold shadow-[0_0_10px_rgb(233_196_106/0.6)]"
               style={{ width: "calc(var(--p) * 100%)" }}
             />
             <Ship
-              className="pointer-events-none absolute -top-[30px] w-14 -translate-x-1/2 text-brand-yellow drop-shadow-[0_0_10px_rgb(254_199_37/0.45)]"
+              className="pointer-events-none absolute -top-[30px] w-14 -translate-x-1/2 text-gold drop-shadow-[0_0_10px_rgb(233_196_106/0.45)]"
               style={{ left: "calc(var(--p) * 100%)", opacity: "var(--ship-o)" }}
             />
             <ol className="relative grid grid-cols-6 items-stretch">
@@ -193,29 +193,29 @@ export function HeroPanel() {
                       <span
                         className={`size-3 rounded-full transition-all duration-500 ease-[var(--ease-out-expo)] ${
                           on
-                            ? "scale-125 bg-brand-yellow shadow-[0_0_0_5px_rgb(254_199_37/0.2),0_0_16px_rgb(254_199_37/0.7)]"
+                            ? "scale-125 bg-gold shadow-[0_0_0_5px_rgb(233_196_106/0.2),0_0_16px_rgb(233_196_106/0.7)]"
                             : passed
-                              ? "bg-brand-yellow"
-                              : "border border-white/50 bg-night"
+                              ? "bg-gold"
+                              : "border border-white/50 bg-abyss"
                         }`}
                       />
                     </span>
                     <span
                       aria-hidden="true"
-                      className={`h-4 w-px transition-colors duration-500 ${on || passed ? "bg-brand-yellow/70" : "bg-white/20"}`}
+                      className={`h-4 w-px transition-colors duration-500 ${on || passed ? "bg-gold/70" : "bg-white/20"}`}
                     />
                     {/* transparent, rounded box */}
                     <div
                       className={`flex w-full flex-1 flex-col items-center gap-3 rounded-2xl border px-3 py-4 transition-all duration-500 ease-[var(--ease-out-expo)] ${
                         on
-                          ? "-translate-y-1 border-brand-yellow bg-white/[0.06] shadow-[0_0_26px_-8px_rgb(254_199_37/0.6)]"
+                          ? "-translate-y-1 border-gold bg-white/[0.06] shadow-[0_0_26px_-8px_rgb(233_196_106/0.6)]"
                           : passed
-                            ? "border-brand-yellow/35 bg-transparent"
+                            ? "border-gold/35 bg-transparent"
                             : "border-white/20 bg-transparent"
                       }`}
                     >
                       <Icon
-                        className={`size-6 transition-colors duration-500 ${on || passed ? "text-brand-yellow" : "text-white/70"}`}
+                        className={`size-6 transition-colors duration-500 ${on || passed ? "text-gold" : "text-white/70"}`}
                         strokeWidth={1.75}
                         aria-hidden="true"
                       />
@@ -243,11 +243,11 @@ export function HeroPanel() {
               <li
                 key={label}
                 className={`flex items-center gap-3.5 rounded-2xl border px-4 py-3.5 transition-colors duration-500 ${
-                  on ? "border-brand-yellow bg-white/[0.06]" : "border-white/20 bg-transparent"
+                  on ? "border-gold bg-white/[0.06]" : "border-white/20 bg-transparent"
                 }`}
               >
                 <Icon
-                  className={`size-5 shrink-0 transition-colors duration-500 ${on ? "text-brand-yellow" : "text-white/70"}`}
+                  className={`size-5 shrink-0 transition-colors duration-500 ${on ? "text-gold" : "text-white/70"}`}
                   strokeWidth={2}
                   aria-hidden="true"
                 />

@@ -1,7 +1,11 @@
 /**
- * All homepage copy lives here, transcribed word-for-word from the current
- * barbadosmaritime.com homepage. Edit text in this file only, so the design
+ * All homepage copy lives here. Edit text in this file only, so the design
  * components never drift from the approved content.
+ *
+ * - Existing copy is transcribed word-for-word from the current barbadosmaritime.com homepage.
+ * - New copy (hero lead, section headings, process, FAQ, enquiry, emergency desk) comes from the
+ *   client-approved mockup. Items marked DRAFT state facts about the registry's service and must be
+ *   confirmed by the registry before launch.
  *
  * Internal hrefs mirror the existing WordPress page slugs where they are known;
  * any marked "confirm" should be checked against the live site's menu.
@@ -30,6 +34,8 @@ export const notice = {
   linkText: "flagged vessels operating in the Strait of Hormuz.",
   href: "/navigational-guidance",
 };
+
+export const headerCta = { label: "Register a vessel", href: "#enquiry" };
 
 export type NavItem = { label: string; href: string; children?: { label: string; href: string }[] };
 
@@ -80,7 +86,11 @@ export const mainNav: NavItem[] = [
 export type HeroSlide = {
   eyebrow: string;
   title: string[];
+  /** Index of the title line set in the italic teal-to-gold accent. */
+  accent?: number;
+  lead?: string;
   cta: { label: string; href: string };
+  secondary?: { label: string; href: string };
   image: string; // photo, also used as the video poster
   imageAlt: string;
   focus: string; // CSS object-position
@@ -88,11 +98,25 @@ export type HeroSlide = {
   video?: string;
 };
 
-// Hero slides reuse headings, buttons and photos that already appear on the homepage.
 export const heroSlides: HeroSlide[] = [
+  {
+    // Headline and lead from the client-approved mockup.
+    eyebrow: "Barbados Maritime Ship Registry",
+    title: ["Flag your fleet", "where the sea", "still knows your name."],
+    accent: 1,
+    lead: "A premium ship registry with a human on the other end. Quality-driven, white-listed and reachable at three in the morning.",
+    cta: { label: "Begin registration", href: "#enquiry" },
+    secondary: { label: "Latest bulletins", href: "#notices" },
+    // Clip: "Aerial Footage Of A Cargo Ship At Sea" by Alexander Bobrov, Pexels (free licence), 1280×720.
+    video: "/videos/ship-at-sea.mp4",
+    image: "/images/ship-at-sea-poster.jpg",
+    imageAlt: "Container ship under way at sea, seen from above",
+    focus: "60% 50%",
+  },
   {
     eyebrow: "Barbados Maritime Ship Registry",
     title: ["Barbados Maritime", "Registration Fee"],
+    accent: 1,
     cta: { label: "Registration Fee", href: "/registration-fees" },
     image: "/images/hero-ship.jpg",
     imageAlt: "Barbados-flagged vessel METSOVO, port of registry Bridgetown",
@@ -101,21 +125,30 @@ export const heroSlides: HeroSlide[] = [
   {
     eyebrow: "Barbados Maritime Ship Registry",
     title: ["Navigational guidance for Barbadian-flagged", "vessels operating in the Strait of Hormuz."],
+    accent: 1,
     cta: { label: "Guidance", href: "/navigational-guidance" },
-    // Clip: "A Footage of a Cargo Ship Floating on the Sea" by Maria Marin, Pexels (free licence).
-    video: "/videos/cargo-ship-sailing.mp4",
-    image: "/images/slides/slide-cargo-ship-poster.jpg",
-    imageAlt: "Cargo ship sailing on the open sea",
-    focus: "50% 50%",
+    image: "/images/slides/slide-sea.jpg",
+    imageAlt: "Calm open sea under a clear sky",
+    focus: "50% 55%",
   },
   {
     eyebrow: "Barbados Maritime Ship Registry",
     title: ["Who We Are", "& What We Do"],
+    accent: 1,
     cta: { label: "Learn More", href: "/about-us" },
     image: "/images/slides/slide-yacht.jpg",
     imageAlt: "Motor yacht under way at sea",
     focus: "62% 55%",
   },
+];
+
+// Credentials ticker under the hero (facts taken from the existing homepage copy).
+export const credentials = [
+  "ISO 9001 accredited",
+  "IMO member since 1971",
+  "24/7 · 365 emergency desk",
+  "Paris MOU white list",
+  "USCG QUALSHIP 21",
 ];
 
 export const highlights = [
@@ -137,6 +170,16 @@ export const labels = {
 
 export const whoWeAre = {
   heading: ["Who We Are", "& What We Do"],
+  // Mockup headline; the accent phrase is set in italic.
+  title: { before: "A registry run like a ", accent: "bridge watch", after: " — attentive, precise, never asleep." },
+  badge: { title: "ISO 9001", text: "Accredited quality system" },
+  // Figures from the existing copy: IMO member since 1971, 24/7 service 365 days a year, ten IACS societies.
+  facts: [
+    { value: "1971", label: "IMO member since" },
+    { value: "24/7", label: "Emergency response" },
+    { value: "10", label: "IACS societies appointed" },
+    { value: "365", label: "Days a year on watch" },
+  ],
   paragraphs: [
     "Barbados Maritime Ship Registry offers the discerning ship operator a first-class personal service in all aspects of ship registration. We act as Executive Agents for and on behalf of the Barbados Government.",
     "White-listed in the Paris MOU, approved for the USCG QUALSHIP21 programme, and accredited to ISO9001, the BMSR provides a quality-driven service second to none.",
@@ -174,10 +217,18 @@ export const guidance = {
   cta: { label: "Guidance", href: "/navigational-guidance" },
 };
 
+export const notices = {
+  eyebrow: "From the registrar's desk",
+  heading: "Notices & bulletins",
+  viewAll: { label: "View All", href: "/bulletins" },
+};
+
 export const linkedinFollow = {
   heading: "Follow us on Linkedin for all of the latest updates",
   cta: "Click here to follow us",
 };
+
+export const servicesHeading = "Everything a flag state owes you";
 
 // Body text is split around inline links so the original wording is preserved.
 export const services = [
@@ -218,6 +269,31 @@ export const services = [
     cta: { label: "Read More", href: "/recognised-organisations" },
   },
 ] as const;
+
+// DRAFT (client-approved mockup): confirm the steps and the 24-hour provisional timing with the registry.
+export const registrationProcess = {
+  eyebrow: "From enquiry to registry",
+  title: { before: "Four steps, and a ", accent: "provisional in 24 hours" },
+  note: "Typical timeline",
+  steps: [
+    {
+      title: "Enquiry & eligibility",
+      text: "Send us the vessel particulars. We confirm eligibility, age criteria and the class society within one working day.",
+    },
+    {
+      title: "Provisional registration",
+      text: "Provisional certificates issued in as little as 24 hours, so the vessel can trade while the paperwork completes.",
+    },
+    {
+      title: "Survey & statutory certificates",
+      text: "An IACS recognised organisation surveys on our behalf and issues the statutory certificates for the flag.",
+    },
+    {
+      title: "Permanent registry & aftercare",
+      text: "Permanent certificate of registry, mortgage recording where required, then annual inspection and 24/7 support.",
+    },
+  ],
+};
 
 // Descriptions appear on hover, as on the live site.
 export const quickLinks = [
@@ -272,11 +348,11 @@ export const islandStats = [
   { value: 493, suffix: "Km2", label: ["Size of", "Barbados"] },
 ];
 
-// Full-width backdrop behind the Barbados stats: a ship-at-sea video, with the sea photo as poster/fallback.
-// Clip: "Aerial Footage Of A Cargo Ship At Sea" by Alexander Bobrov, Pexels (free licence), 1280×720.
+// Full-width backdrop behind the Barbados stats: a ship-at-sea video, with a still frame as poster/fallback.
+// Clip: "A Footage of a Cargo Ship Floating on the Sea" by Maria Marin, Pexels (free licence), 1280×720.
 export const statsBackdrop: { poster: string; video?: string } = {
-  poster: "/images/ship-at-sea-poster.jpg",
-  video: "/videos/ship-at-sea.mp4",
+  poster: "/images/slides/slide-cargo-ship-poster.jpg",
+  video: "/videos/cargo-ship-sailing.mp4",
 };
 
 export const bulletins = {
@@ -327,8 +403,64 @@ export const bulletins = {
   ],
 };
 
+// FAQ (client-approved mockup). Answers 4 and 5 use the existing homepage copy;
+// answers 1–3 are DRAFT and must be confirmed by the registry.
+export const faq = {
+  eyebrow: "Common questions",
+  title: { before: "Answers before you ", accent: "pick up the phone" },
+  intro: "Anything not covered here, the registry will answer the same day.",
+  items: [
+    {
+      q: "Which vessels are eligible for the Barbados flag?",
+      a: "Merchant vessels, yachts and offshore units owned by a Barbados entity, or by a foreign company with an appointed local representative. Age and class criteria apply and are confirmed at enquiry.",
+    },
+    {
+      q: "How quickly can a vessel be registered?",
+      a: "Provisional registration can be completed in as little as 24 hours once the particulars and documents are in order, so the vessel can trade while permanent registration completes.",
+    },
+    {
+      q: "Can a mortgage be recorded on the register?",
+      a: "Yes. Mortgages can be recorded on the register as part of permanent registration.",
+    },
+    {
+      q: "Who surveys on behalf of the flag?",
+      a: "Ten Classification Societies that are members of IACS (International Association of Classification Societies), as well as several other recognised organisations, have been appointed to survey and issue statutory certificates on our behalf.",
+    },
+    {
+      q: "Is there support outside office hours?",
+      a: "We provide a 24/7 emergency service, 365 days a year; urgent dispensation and exemptions may be dealt with outside of normal office hours, and the Principal Registrar may be contacted directly for help, advice and guidance.",
+    },
+  ],
+};
+
+// Enquiry form (client-approved mockup). The submit handler is a front-end stub.
+export const enquiry = {
+  eyebrow: "Start an enquiry",
+  heading: "Send us the particulars",
+  intro: "Vessel type, tonnage, year of build and intended trade are enough for us to confirm eligibility and indicative fees.",
+  labels: { name: "Your name", email: "Email", vessel: "Vessel name / IMO", type: "Vessel type", details: "Details" },
+  placeholders: {
+    name: "Jane Marlow",
+    email: "jane@operator.com",
+    vessel: "MV Example — IMO 1234567",
+    details: "Tonnage, year of build, intended trade…",
+  },
+  vesselTypes: ["Bulk carrier", "Container ship", "Tanker", "General cargo", "Yacht", "Offshore unit", "Other"],
+  submit: "Send enquiry",
+  thanks: "Thank you. The registry will be in touch shortly.",
+};
+
+// Emergency desk banner (client-approved mockup) using the existing 24hr emergency number.
+export const emergencyDesk = {
+  eyebrow: "Emergency desk",
+  title: { before: "When it goes wrong at 03:00,", accent: "someone picks up." },
+  cta: "Reach the duty registrar",
+};
+
 export const stayConnected = {
   heading: "Stay Connected",
+  // Taken from the existing "Bulletins" copy on the homepage.
+  intro: "Regular bulletins to keep our clients and associates abreast of new developments.",
   nameLabel: "Your Name *",
   emailLabel: "Your Email *",
   submit: "Sign Up",
@@ -336,6 +468,11 @@ export const stayConnected = {
 
 export const footer = {
   contactHeading: "Our Contact Details",
+  // Mockup footer lines; the tagline repeats the existing "Executive Agents" wording.
+  blurb: "We are here to help with any query — registration, fees, certificates or an urgent dispensation.",
+  tagline: "Executive Agents for and on behalf of the Barbados Government",
+  mapLink: { label: "Open in Google Maps", href: "https://www.google.com/maps/search/?api=1&query=1+Great+Russell+Street+London+WC1B+3ND" },
+  wordmark: "Barbados Maritime",
   linksHeading: "Important Links",
   officeHeading: "London Office",
   links: [

@@ -1,31 +1,44 @@
 @import "tailwindcss";
 
-/* BMSR brand tokens — sampled from the existing site, unchanged. */
+/* "Night watch" palette from the client-approved mockup: deep navy water, teal and gold signal lights. */
 @theme {
-  --color-brand-blue: #3d7cc8;
-  --color-brand-blue-deep: #2f68ae; /* hover/pressed shade of the brand blue */
-  --color-brand-yellow: #fec725;
-  --color-brand-yellow-deep: #f2b705; /* hover shade of the brand yellow */
-  --color-ink: #212121;
-  --color-body: #616161;
-  --color-mist: #f4f4f4;
-  --color-night: #1a1a1a;
-  --color-line: #e5e5e5;
+  --color-abyss: #000f23; /* deepest background */
+  --color-deep: #031d2f; /* alternate section background */
+  --color-harbor: #072a3d; /* raised surfaces: cards, panels */
+  --color-tide: #0b3a4b; /* emergency band, hover surfaces */
+  --color-foam: #eef4f6; /* headings, primary text */
+  --color-haze: #a3b6c3; /* body text */
+  --color-fog: #6f889b; /* labels, meta */
+  --color-teal: #3cc8b9;
+  --color-teal-deep: #1daba6;
+  --color-gold: #e9c46a;
+  --color-gold-deep: #d7ab43;
+  --color-rule: rgb(255 255 255 / 0.1);
 
-  --shadow-float: 0 24px 50px -28px rgb(26 26 26 / 0.45);
-  --shadow-card: 0 10px 30px -18px rgb(26 26 26 / 0.35);
+  --shadow-float: 0 30px 60px -30px rgb(0 0 0 / 0.75);
+  --shadow-card: 0 18px 40px -26px rgb(0 0 0 / 0.7);
 
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 @theme inline {
-  --font-display: var(--font-quicksand), ui-sans-serif, system-ui, sans-serif;
-  --font-sans: var(--font-nunito), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-instrument), Georgia, "Times New Roman", serif;
+  --font-sans: var(--font-manrope), ui-sans-serif, system-ui, sans-serif;
 }
 
 @keyframes wave-drift {
   to {
     transform: translate3d(-50%, 0, 0);
+  }
+}
+
+@keyframes shine {
+  0%,
+  72% {
+    transform: translateX(-160%) skewX(-20deg);
+  }
+  100% {
+    transform: translateX(320%) skewX(-20deg);
   }
 }
 
@@ -37,17 +50,18 @@
 
 @layer base {
   html {
-    color-scheme: light;
+    color-scheme: dark;
     scroll-padding-top: 6rem;
     -webkit-text-size-adjust: 100%;
+    interpolate-size: allow-keywords; /* lets the FAQ answers animate to their natural height */
   }
 
   body {
-    background: #fff;
-    color: var(--color-body);
+    background: var(--color-abyss);
+    color: var(--color-haze);
     font-family: var(--font-sans);
     font-size: 1rem;
-    line-height: 1.75;
+    line-height: 1.7;
     text-rendering: optimizeLegibility;
   }
 
@@ -56,14 +70,20 @@
   h3,
   h4 {
     font-family: var(--font-display);
-    color: var(--color-ink);
-    font-weight: 700;
-    line-height: 1.2;
+    color: var(--color-foam);
+    font-weight: 400;
+    line-height: 1.08;
+    letter-spacing: -0.01em;
     text-wrap: balance;
   }
 
+  ::selection {
+    background: var(--color-teal);
+    color: var(--color-abyss);
+  }
+
   :focus-visible {
-    outline: 3px solid var(--color-brand-blue);
+    outline: 2px solid var(--color-teal);
     outline-offset: 3px;
   }
 
@@ -103,17 +123,36 @@
     }
   }
 
-  /* Small uppercase label above a heading. */
+  /* Small, widely tracked uppercase label above a heading. */
   .eyebrow {
-    display: block;
-    font-size: 0.75rem;
-    font-weight: 700;
-    letter-spacing: 0.24em;
+    display: flex;
+    align-items: center;
+    gap: 0.875rem;
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 0.28em;
     text-transform: uppercase;
-    color: var(--color-brand-blue);
+    color: var(--color-fog);
+  }
+  .eyebrow-rule::before {
+    content: "";
+    width: 2.5rem;
+    height: 1px;
+    background: currentColor;
+    opacity: 0.7;
   }
 
-  /* Rectangular button with a fill that slides up on hover. */
+  /* Italic phrase in a heading, shaded from teal to gold like a sunrise on the water. */
+  .accent {
+    font-style: italic;
+    background: linear-gradient(95deg, var(--color-teal) 0%, #9fd2a2 55%, var(--color-gold) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    padding-right: 0.06em; /* keeps the italic overhang from being clipped */
+  }
+
+  /* Pill button with a fill that slides up on hover. */
   .btn {
     position: relative;
     isolation: isolate;
@@ -121,13 +160,12 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: 0.75rem;
-    min-height: 3.25rem;
-    padding: 0 2rem;
-    font-size: 0.75rem;
-    font-weight: 800;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
+    gap: 0.625rem;
+    min-height: 3rem;
+    padding: 0 1.625rem;
+    border-radius: 9999px;
+    font-size: 0.875rem;
+    font-weight: 600;
     line-height: 1;
     transition: color 0.4s var(--ease-out-expo);
   }
@@ -147,27 +185,43 @@
     transition: transform 0.4s var(--ease-out-expo);
   }
   .btn:hover svg {
-    transform: translateX(4px);
+    transform: translateX(3px);
   }
-  .btn-blue {
-    --sweep: var(--color-brand-blue-deep);
-    background: var(--color-brand-blue);
-    color: #fff;
+  .btn-caps {
+    font-size: 0.6875rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
   }
-  .btn-yellow {
-    --sweep: #fff;
-    background: var(--color-brand-yellow);
-    color: var(--color-ink);
+  .btn-light {
+    --sweep: var(--color-gold);
+    background: var(--color-foam);
+    color: var(--color-abyss);
   }
-  .btn-outline {
-    --sweep: var(--color-ink);
-    min-height: 2.75rem;
-    padding: 0 1.5rem;
-    color: var(--color-ink);
-    box-shadow: inset 0 0 0 1px var(--color-line);
+  .btn-ghost {
+    --sweep: rgb(255 255 255 / 0.1);
+    color: var(--color-foam);
+    box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.25);
   }
-  .btn-outline:hover {
-    color: #fff;
+  .btn-teal {
+    --sweep: var(--color-foam);
+    background: var(--color-teal);
+    color: var(--color-abyss);
+  }
+  /* A soft highlight that glides across the button every few seconds. */
+  .btn-shine::after {
+    content: "";
+    position: absolute;
+    inset: 0 auto 0 0;
+    width: 35%;
+    background: linear-gradient(90deg, transparent, rgb(255 255 255 / 0.55), transparent);
+    animation: shine 5s var(--ease-out-expo) infinite;
+    pointer-events: none;
+  }
+  .btn-gold {
+    --sweep: var(--color-foam);
+    background: var(--color-gold);
+    color: var(--color-abyss);
   }
 
   /* Endless horizontal ticker: the track holds two identical sets. */
@@ -180,26 +234,58 @@
     animation-play-state: paused;
   }
 
-  /* Text link with an arrow that nudges on hover. */
+  /* Small teal text link with an arrow that nudges on hover. */
   .link-arrow {
     display: inline-flex;
     align-items: center;
-    gap: 0.625rem;
-    font-size: 0.75rem;
-    font-weight: 800;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    color: var(--color-brand-blue);
+    gap: 0.5rem;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: var(--color-teal);
     transition: color 0.3s;
   }
   .link-arrow svg {
     transition: transform 0.4s var(--ease-out-expo);
   }
   .link-arrow:hover {
-    color: var(--color-brand-blue-deep);
+    color: var(--color-foam);
   }
   .link-arrow:hover svg {
     transform: translateX(4px);
+  }
+
+  /* Form fields on the dark surfaces. */
+  .field {
+    width: 100%;
+    border-radius: 0.5rem;
+    border: 1px solid var(--color-rule);
+    background: rgb(0 15 35 / 0.55);
+    padding: 0.75rem 0.875rem;
+    font-size: 0.875rem;
+    color: var(--color-foam);
+    outline: none;
+    transition:
+      border-color 0.3s,
+      background-color 0.3s;
+  }
+  .field::placeholder {
+    color: var(--color-fog);
+  }
+  .field:focus {
+    border-color: var(--color-teal);
+    background: rgb(0 15 35 / 0.8);
+  }
+
+  /* FAQ answers open and close smoothly where the browser supports it. */
+  .faq::details-content {
+    block-size: 0;
+    overflow: hidden;
+    transition:
+      block-size 0.45s var(--ease-out-expo),
+      content-visibility 0.45s allow-discrete;
+  }
+  .faq[open]::details-content {
+    block-size: auto;
   }
 }
 

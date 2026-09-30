@@ -10,27 +10,43 @@ import { HeroPanel } from "./HeroPanel";
 
 const SLIDE_SECONDS = 6.5;
 
-/** Headline split into masked words so each word can rise into view. */
-function MaskedWords({ lines }: { lines: string[] }) {
-  return lines.map((line, li) => (
-    <span key={li} className={`block ${li > 0 ? "text-brand-yellow" : ""}`}>
-      {line.split(" ").map((word, wi) => (
-        <Fragment key={wi}>
-          {wi > 0 && " "}
-          <span className="-mb-[0.14em] inline-block overflow-hidden pb-[0.14em] align-top">
-            <span data-word className="inline-block will-change-transform">
-              {word}
+const TEAL = [0x3c, 0xc8, 0xb9];
+const GOLD = [0xe9, 0xc4, 0x6a];
+const mix = (t: number) => `rgb(${TEAL.map((c, i) => Math.round(c + (GOLD[i] - c) * t)).join(" ")})`;
+
+/**
+ * Headline split into masked words so each word can rise into view. The accent line is
+ * italic and shaded word by word from teal to gold (a gradient per line would not survive
+ * the per-word masks).
+ */
+function MaskedWords({ lines, accent }: { lines: string[]; accent?: number }) {
+  return lines.map((line, li) => {
+    const words = line.split(" ");
+    const isAccent = li === accent;
+    return (
+      <span key={li} className={`block ${isAccent ? "italic" : ""}`}>
+        {words.map((word, wi) => (
+          <Fragment key={wi}>
+            {wi > 0 && " "}
+            <span className={`-mb-[0.16em] inline-block overflow-hidden pb-[0.16em] align-top ${isAccent ? "pr-[0.08em]" : ""}`}>
+              <span
+                data-word
+                className="inline-block will-change-transform"
+                style={isAccent ? { color: mix(words.length > 1 ? wi / (words.length - 1) : 0) } : undefined}
+              >
+                {word}
+              </span>
             </span>
-          </span>
-        </Fragment>
-      ))}
-    </span>
-  ));
+          </Fragment>
+        ))}
+      </span>
+    );
+  });
 }
 
 function SlideArrows({ onPrev, onNext }: { onPrev: () => void; onNext: () => void }) {
   const cls =
-    "grid size-11 place-items-center rounded-full border border-white/30 text-white transition-colors hover:border-brand-yellow hover:bg-brand-yellow hover:text-ink";
+    "grid size-11 place-items-center rounded-full border border-white/25 text-foam transition-colors hover:border-teal hover:bg-teal hover:text-abyss";
   return (
     <div className="flex items-center gap-2">
       <button type="button" onClick={onPrev} aria-label="Previous slide" className={cls}>
@@ -223,7 +239,7 @@ export function Hero() {
         if (e.key === "ArrowRight") next();
         if (e.key === "ArrowLeft") prev();
       }}
-      className="relative isolate touch-pan-y select-none overflow-hidden bg-night text-white"
+      className="relative isolate touch-pan-y select-none overflow-hidden bg-abyss text-foam"
     >
       {/* Photo layers */}
       {heroSlides.map((slide, i) => (
@@ -260,20 +276,22 @@ export function Hero() {
         </div>
       ))}
 
-      {/* Legibility washes: dark on the text side and along the foot for the panel */}
+      {/* Night-watch grade: a teal-navy tint over every slide, then washes for legibility */}
+      <div aria-hidden="true" className="pointer-events-none absolute inset-0 z-[3] bg-[#0a3a52] opacity-60 mix-blend-color" />
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-0 z-[3] bg-[linear-gradient(90deg,rgb(12_16_22/0.84)_0%,rgb(12_16_22/0.6)_45%,rgb(12_16_22/0.28)_100%)]"
+        className="pointer-events-none absolute inset-0 z-[3] bg-[linear-gradient(90deg,rgb(0_15_35/0.9)_0%,rgb(0_15_35/0.62)_45%,rgb(0_15_35/0.2)_100%)]"
       />
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-x-0 bottom-0 z-[3] h-1/2 bg-gradient-to-t from-[rgb(12_16_22/0.88)] to-transparent"
+        className="pointer-events-none absolute inset-x-0 bottom-0 z-[3] h-1/2 bg-gradient-to-t from-abyss to-transparent"
       />
+      <div aria-hidden="true" className="pointer-events-none absolute inset-x-0 top-0 z-[3] h-40 bg-gradient-to-b from-abyss/80 to-transparent" />
 
       {/* Three.js sea of light along the foot of the hero, under the ship-route panel */}
       <WaveField className="absolute inset-x-0 bottom-0 z-[4] h-[62%] [mask-image:linear-gradient(to_top,#000_60%,transparent)]" />
 
-      <div className="container-site relative z-10 flex min-h-[46rem] flex-col pb-10 pt-16 lg:min-h-[max(50rem,calc(100svh-9.5rem))] lg:pb-12">
+      <div className="container-site relative z-10 flex min-h-[48rem] flex-col pb-10 pt-28 lg:min-h-[max(54rem,calc(100svh-4.5rem))] lg:pb-12">
         <div className="flex flex-1 flex-col justify-center py-10">
           {/* Slide copy, stacked in one grid cell so the block keeps a steady height */}
           <div className="grid w-full">
@@ -288,26 +306,33 @@ export function Hero() {
                   inert={active !== i}
                   className={`max-w-4xl self-center [grid-area:1/1] ${i === 0 ? "" : "invisible"}`}
                 >
-                  <span
-                    data-fade
-                    className="mb-6 inline-flex border-l-4 border-brand-yellow pl-4 text-xs font-bold uppercase tracking-[0.24em]"
-                  >
+                  <span data-fade className="eyebrow eyebrow-rule mb-7 text-haze">
                     {slide.eyebrow}
                   </span>
                   <Heading
-                    className={`text-white ${
+                    className={
                       long
-                        ? "text-[2rem] leading-[1.2] sm:text-5xl lg:text-[3.5rem]"
-                        : "text-[2.6rem] leading-[1.15] sm:text-6xl lg:text-[5.25rem]"
-                    }`}
+                        ? "text-[2.4rem] leading-[1.04] sm:text-6xl lg:text-[4.5rem]"
+                        : "text-[3.1rem] leading-[0.98] sm:text-7xl lg:text-[6.5rem]"
+                    }
                   >
-                    <MaskedWords lines={slide.title} />
+                    <MaskedWords lines={slide.title} accent={slide.accent} />
                   </Heading>
-                  <div data-fade className="mt-9">
-                    <a href={slide.cta.href} className="btn btn-yellow">
+                  {slide.lead && (
+                    <p data-fade className="mt-7 max-w-md text-[0.9375rem] leading-7 text-haze">
+                      {slide.lead}
+                    </p>
+                  )}
+                  <div data-fade className="mt-9 flex flex-wrap items-center gap-3">
+                    <a href={slide.cta.href} className="btn btn-light">
                       {slide.cta.label}
-                      <ArrowRight className="size-4" strokeWidth={2.5} aria-hidden="true" />
+                      <ArrowRight className="size-4" aria-hidden="true" />
                     </a>
+                    {slide.secondary && (
+                      <a href={slide.secondary.href} className="btn btn-ghost">
+                        {slide.secondary.label}
+                      </a>
+                    )}
                   </div>
                 </div>
               );
@@ -334,11 +359,11 @@ export function Hero() {
                   className="grid h-6 place-items-center"
                 >
                   <span
-                    className={`block h-1 overflow-hidden bg-white/40 transition-[width] duration-500 ease-[var(--ease-out-expo)] ${
-                      active === i ? "w-12" : "w-6 hover:bg-white/80"
+                    className={`block h-0.5 overflow-hidden rounded-full bg-white/25 transition-[width] duration-500 ease-[var(--ease-out-expo)] ${
+                      active === i ? "w-14" : "w-7 hover:bg-white/60"
                     }`}
                   >
-                    <span data-tab-fill={i} style={{ transform: "scaleX(0)" }} className="block h-full origin-left bg-brand-yellow" />
+                    <span data-tab-fill={i} style={{ transform: "scaleX(0)" }} className="block h-full origin-left bg-gradient-to-r from-teal to-gold" />
                   </span>
                 </button>
               ))}

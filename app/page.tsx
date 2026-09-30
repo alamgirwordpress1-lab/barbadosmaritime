@@ -1,16 +1,20 @@
 import { Footer } from "@/components/layout/Footer";
 import { Header } from "@/components/layout/Header";
-import { NoticeBar, TopBar } from "@/components/layout/TopBars";
+import { UtilityBar } from "@/components/layout/TopBars";
 import { ScrollEffects } from "@/components/motion/ScrollEffects";
 import { SmoothScroll } from "@/components/motion/SmoothScroll";
-import { GuidanceAndLinkedIn, PressStatement } from "@/components/sections/Advisories";
 import { Bulletins } from "@/components/sections/Bulletins";
+import { EmergencyDesk } from "@/components/sections/EmergencyDesk";
+import { Enquiry } from "@/components/sections/Enquiry";
+import { Faq } from "@/components/sections/Faq";
 import { Hero } from "@/components/sections/Hero";
 import { IslandStats } from "@/components/sections/IslandStats";
+import { Notices } from "@/components/sections/Notices";
 import { Organisations } from "@/components/sections/Organisations";
+import { Process } from "@/components/sections/Process";
 import { BarbadosBanner, QuickLinks } from "@/components/sections/QuickLinks";
 import { Services } from "@/components/sections/Services";
-import { StayConnected } from "@/components/sections/StayConnected";
+import { Ticker } from "@/components/sections/Ticker";
 import { WhoWeAre } from "@/components/sections/WhoWeAre";
 
 export default function Home() {
@@ -20,25 +24,27 @@ export default function Home() {
       <ScrollEffects />
       <a
         href="#main"
-        className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[70] focus:rounded-full focus:bg-brand-blue focus:px-5 focus:py-3 focus:font-bold focus:text-white"
+        className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[70] focus:rounded-full focus:bg-teal focus:px-5 focus:py-3 focus:font-semibold focus:text-abyss"
       >
         Skip to content
       </a>
-      <TopBar />
-      <NoticeBar />
+      <UtilityBar />
       <Header />
       <main id="main">
         <Hero />
+        <Ticker />
         <WhoWeAre />
-        <PressStatement />
-        <GuidanceAndLinkedIn />
         <Services />
+        <Notices />
+        <Process />
         <QuickLinks />
         <BarbadosBanner />
         <Organisations />
         <IslandStats />
         <Bulletins />
-        <StayConnected />
+        <Faq />
+        <Enquiry />
+        <EmergencyDesk />
       </main>
       <Footer />
     </>

@@ -20,7 +20,7 @@ export function BackToTop() {
       onClick={() => scrollToTarget(0)}
       aria-label="Back to top"
       tabIndex={show ? 0 : -1}
-      className={`fixed bottom-5 right-5 z-40 grid size-12 place-items-center rounded-[2px] bg-brand-blue text-white shadow-float transition-all duration-300 hover:bg-brand-blue-deep sm:bottom-8 sm:right-8 ${
+      className={`fixed bottom-5 right-5 z-40 grid size-12 place-items-center rounded-full bg-teal text-abyss shadow-float transition-all duration-300 hover:bg-foam sm:bottom-8 sm:right-8 ${
         show ? "translate-y-0 opacity-100" : "pointer-events-none translate-y-4 opacity-0"
       }`}
     >

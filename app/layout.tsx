@@ -1,19 +1,20 @@
 import type { Metadata, Viewport } from "next";
-import { Nunito, Quicksand } from "next/font/google";
+import { Instrument_Serif, Manrope } from "next/font/google";
 import "lenis/dist/lenis.css";
 import "./globals.css";
 
-// Same typefaces as the existing site: Quicksand for headings, Nunito for text.
-const quicksand = Quicksand({
-  variable: "--font-quicksand",
+// Typefaces from the client-approved mockup: an editorial serif for headings, a clean sans for text.
+const instrument = Instrument_Serif({
+  variable: "--font-instrument",
   subsets: ["latin"],
-  weight: ["500", "600", "700"],
+  weight: "400",
+  style: ["normal", "italic"],
 });
 
-const nunito = Nunito({
-  variable: "--font-nunito",
+const manrope = Manrope({
+  variable: "--font-manrope",
   subsets: ["latin"],
-  weight: ["400", "600", "700", "800"],
+  weight: ["400", "500", "600", "700"],
 });
 
 export const metadata: Metadata = {
@@ -23,7 +24,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#3d7cc8",
+  themeColor: "#000f23",
 };
 
 /*
@@ -37,7 +38,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en-GB"
-      className={`${quicksand.variable} ${nunito.variable} antialiased`}
+      className={`${instrument.variable} ${manrope.variable} antialiased`}
       suppressHydrationWarning
     >
       <head>
