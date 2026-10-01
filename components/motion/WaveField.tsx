@@ -103,8 +103,8 @@ export function WaveField({ className = "" }: { className?: string }) {
         uSize: { value: small ? 3.4 : 4.2 },
         uPixelRatio: { value: dpr },
         uOpacity: { value: reduce ? 0.95 : 0 },
-        uNear: { value: new THREE.Color("#3cc8b9") }, // teal signal light
-        uFar: { value: new THREE.Color("#1a6d86") }, // deep teal toward the horizon
+        uNear: { value: new THREE.Color("#3d7cc8") }, // ocean signal light
+        uFar: { value: new THREE.Color("#1e4a86") }, // deep ocean toward the horizon
       };
       const material = new THREE.ShaderMaterial({
         uniforms,

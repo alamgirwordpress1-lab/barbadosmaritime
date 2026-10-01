@@ -15,7 +15,7 @@ export function Ticker() {
                 className="flex shrink-0 items-center gap-8 px-8 text-[0.6875rem] font-semibold uppercase tracking-[0.28em] text-haze"
               >
                 {item}
-                <span aria-hidden="true" className={`size-1 rounded-full ${i % 2 ? "bg-gold" : "bg-teal"}`} />
+                <span aria-hidden="true" className={`size-1 rounded-full ${i % 2 ? "bg-gold" : "bg-ocean"}`} />
               </li>
             ))}
           </ul>

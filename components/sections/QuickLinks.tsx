@@ -19,7 +19,7 @@ export function QuickLinks() {
             <li key={tile.title}>
               <a
                 href={tile.href}
-                className="group relative flex h-full flex-col overflow-hidden rounded-xl border border-rule bg-harbor/60 transition-[translate,border-color,box-shadow] duration-500 ease-[var(--ease-out-expo)] hover:-translate-y-1.5 hover:border-teal/40 hover:shadow-float"
+                className="group relative flex h-full flex-col overflow-hidden rounded-xl border border-rule bg-harbor/60 transition-[translate,border-color,box-shadow] duration-500 ease-[var(--ease-out-expo)] hover:-translate-y-1.5 hover:border-ocean/40 hover:shadow-float"
               >
                 <div className="relative aspect-[4/3] overflow-hidden">
                   <Image
@@ -30,7 +30,7 @@ export function QuickLinks() {
                     className="object-cover saturate-[0.85] transition-transform duration-[1.2s] ease-[var(--ease-out-expo)] group-hover:scale-[1.06]"
                   />
                   <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-harbor via-harbor/10 to-transparent" />
-                  <span className="absolute left-4 top-4 grid size-11 place-items-center rounded-full border border-white/20 bg-abyss/60 text-teal backdrop-blur-md transition-colors duration-500 group-hover:bg-teal group-hover:text-abyss">
+                  <span className="absolute left-4 top-4 grid size-11 place-items-center rounded-full border border-white/20 bg-abyss/60 text-ocean backdrop-blur-md transition-colors duration-500 group-hover:bg-ocean group-hover:text-abyss">
                     <Icon className="size-[1.125rem]" aria-hidden="true" />
                   </span>
                 </div>
@@ -38,11 +38,11 @@ export function QuickLinks() {
                 <div className="flex flex-1 flex-col px-6 pb-6 pt-2 sm:px-7 sm:pb-7">
                   <h3 className="text-3xl">{tile.title}</h3>
                   <p className="mb-6 mt-3 text-sm leading-6">{tile.description}</p>
-                  <span className="mt-auto flex items-center justify-between border-t border-rule pt-5 text-xs font-semibold text-haze transition-colors group-hover:text-teal">
-                    <span aria-hidden="true" className="h-px w-10 bg-gradient-to-r from-teal to-gold transition-[width] duration-500 group-hover:w-16" />
+                  <span className="mt-auto flex items-center justify-between border-t border-rule pt-5 text-xs font-semibold text-haze transition-colors group-hover:text-ocean">
+                    <span aria-hidden="true" className="h-px w-10 bg-gradient-to-r from-ocean to-gold transition-[width] duration-500 group-hover:w-16" />
                     <span
                       aria-hidden="true"
-                      className="grid size-9 place-items-center rounded-full border border-rule transition-[rotate,background-color,border-color,color] duration-500 ease-[var(--ease-out-expo)] group-hover:rotate-45 group-hover:border-teal group-hover:bg-teal group-hover:text-abyss"
+                      className="grid size-9 place-items-center rounded-full border border-rule transition-[rotate,background-color,border-color,color] duration-500 ease-[var(--ease-out-expo)] group-hover:rotate-45 group-hover:border-gold group-hover:bg-gold group-hover:text-abyss"
                     >
                       <ArrowUpRight className="size-4" />
                     </span>

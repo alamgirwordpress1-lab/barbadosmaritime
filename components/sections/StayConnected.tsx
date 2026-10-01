@@ -29,7 +29,7 @@ export function StayConnected() {
       className="relative isolate overflow-hidden rounded-2xl border border-white/10 bg-[linear-gradient(120deg,#072a3d_0%,#041f33_55%,#031d2f_100%)] p-6 sm:p-10 lg:px-12"
     >
       {/* soft signal lights and a faint chart grid */}
-      <span aria-hidden="true" className="absolute -left-20 -top-24 -z-10 size-72 rounded-full bg-teal/20 blur-3xl" />
+      <span aria-hidden="true" className="absolute -left-20 -top-24 -z-10 size-72 rounded-full bg-ocean/20 blur-3xl" />
       <span aria-hidden="true" className="absolute -bottom-28 right-10 -z-10 size-72 rounded-full bg-gold/10 blur-3xl" />
       <span
         aria-hidden="true"
@@ -46,13 +46,13 @@ export function StayConnected() {
 
         {done ? (
           <p role="status" className="flex items-center gap-3 text-foam xl:justify-self-end">
-            <CircleCheck className="size-5 text-teal" aria-hidden="true" />
+            <CircleCheck className="size-5 text-ocean" aria-hidden="true" />
             Thank you for signing up.
           </p>
         ) : (
           <form
             onSubmit={onSubmit}
-            className="flex w-full flex-col gap-2 rounded-3xl border border-white/10 bg-abyss/60 p-2 backdrop-blur-md transition-colors focus-within:border-teal/40 sm:flex-row sm:items-center sm:rounded-full"
+            className="flex w-full flex-col gap-2 rounded-3xl border border-white/10 bg-abyss/60 p-2 backdrop-blur-md transition-colors focus-within:border-ocean/40 sm:flex-row sm:items-center sm:rounded-full"
           >
             <label className={field}>
               <User className="size-4 shrink-0 text-fog" aria-hidden="true" />
@@ -72,7 +72,7 @@ export function StayConnected() {
                 className={input}
               />
             </label>
-            <button type="submit" className="btn btn-teal shrink-0">
+            <button type="submit" className="btn btn-gold shrink-0">
               {stayConnected.submit}
               <Send className="size-4" aria-hidden="true" />
             </button>

@@ -1,4 +1,4 @@
-/** Heading text with one italic teal-to-gold phrase, as in the mockup. */
+/** Heading text with one italic ocean-to-gold phrase, as in the mockup. */
 export function AccentTitle({ before, accent, after }: { before: string; accent: string; after?: string }) {
   return (
     <>

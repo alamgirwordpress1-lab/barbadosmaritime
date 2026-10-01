@@ -33,9 +33,9 @@ export function IslandStats() {
             return (
               <li
                 key={stat.label.join(" ")}
-                className="group rounded-xl border border-white/15 bg-white/[0.06] p-5 backdrop-blur-md transition-[background-color,translate,border-color] duration-500 ease-[var(--ease-out-expo)] hover:-translate-y-1 hover:border-teal/40 hover:bg-white/10 sm:p-7"
+                className="group rounded-xl border border-white/15 bg-white/[0.06] p-5 backdrop-blur-md transition-[background-color,translate,border-color] duration-500 ease-[var(--ease-out-expo)] hover:-translate-y-1 hover:border-ocean/40 hover:bg-white/10 sm:p-7"
               >
-                <span className="grid size-11 place-items-center rounded-full border border-teal/40 text-teal transition-colors duration-500 group-hover:bg-teal group-hover:text-abyss">
+                <span className="grid size-11 place-items-center rounded-full border border-ocean/40 text-ocean transition-colors duration-500 group-hover:bg-ocean group-hover:text-abyss">
                   <Icon className="size-5" strokeWidth={1.75} aria-hidden="true" />
                 </span>
                 <span className="mt-6 block font-display text-5xl leading-none tabular-nums text-foam sm:text-6xl">

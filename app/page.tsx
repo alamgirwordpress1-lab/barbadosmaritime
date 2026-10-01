@@ -24,7 +24,7 @@ export default function Home() {
       <ScrollEffects />
       <a
         href="#main"
-        className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[70] focus:rounded-full focus:bg-teal focus:px-5 focus:py-3 focus:font-semibold focus:text-abyss"
+        className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[70] focus:rounded-full focus:bg-gold focus:px-5 focus:py-3 focus:font-semibold focus:text-abyss"
       >
         Skip to content
       </a>

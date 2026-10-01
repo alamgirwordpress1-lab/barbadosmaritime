@@ -136,7 +136,7 @@ export function Header() {
                       i === ACTIVE || hover === i ? "text-foam" : "text-haze"
                     }`}
                   >
-                    {i === ACTIVE && <span aria-hidden="true" className="mr-1 size-1.5 rounded-full bg-teal shadow-[0_0_8px_rgb(60_200_185/0.9)]" />}
+                    {i === ACTIVE && <span aria-hidden="true" className="mr-1 size-1.5 rounded-full bg-ocean shadow-[0_0_8px_rgb(61_124_200/0.9)]" />}
                     {item.label}
                     {item.children && (
                       <ChevronDown
@@ -151,7 +151,7 @@ export function Header() {
                       {/* caret */}
                       <span aria-hidden="true" className="absolute left-1/2 top-[0.6rem] size-3 -translate-x-1/2 rotate-45 border-l border-t border-white/10 bg-harbor" />
                       <div className="relative min-w-64 overflow-hidden rounded-2xl border border-white/10 bg-harbor/95 p-2 shadow-float backdrop-blur-xl">
-                        <span aria-hidden="true" className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-teal/70 to-transparent" />
+                        <span aria-hidden="true" className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-ocean/70 to-transparent" />
                         <p className="px-3 pb-1.5 pt-2 text-[0.625rem] font-semibold uppercase tracking-[0.28em] text-fog">{item.label}</p>
                         <ul>
                           {item.children.map((child) => (
@@ -161,11 +161,11 @@ export function Header() {
                                 className="group/item flex items-center justify-between gap-6 rounded-xl px-3 py-2.5 text-[0.8125rem] text-haze transition-colors duration-300 hover:bg-white/[0.06] hover:text-foam"
                               >
                                 <span className="flex items-center gap-2.5">
-                                  <span aria-hidden="true" className="size-1 rounded-full bg-fog transition-colors group-hover/item:bg-teal" />
+                                  <span aria-hidden="true" className="size-1 rounded-full bg-fog transition-colors group-hover/item:bg-ocean" />
                                   {child.label}
                                 </span>
                                 <ArrowUpRight
-                                  className="size-3.5 -translate-x-1 text-teal opacity-0 transition-[opacity,translate] duration-300 group-hover/item:translate-x-0 group-hover/item:opacity-100"
+                                  className="size-3.5 -translate-x-1 text-ocean opacity-0 transition-[opacity,translate] duration-300 group-hover/item:translate-x-0 group-hover/item:opacity-100"
                                   aria-hidden="true"
                                 />
                               </a>
@@ -194,7 +194,7 @@ export function Header() {
             <span className="hidden size-10 place-items-center rounded-full border border-white/10 2xl:grid">
               <BarbadosFlag className="h-3.5 w-auto rounded-[2px]" />
             </span>
-            <a href={headerCta.href} className="btn btn-teal btn-caps btn-shine ml-1 hidden min-h-10 whitespace-nowrap px-5 sm:inline-flex">
+            <a href={headerCta.href} className="btn btn-gold btn-caps btn-shine ml-1 hidden min-h-10 whitespace-nowrap px-5 sm:inline-flex">
               {headerCta.label}
               <ArrowRight className="size-3.5 xl:max-2xl:hidden" aria-hidden="true" />
             </a>
@@ -220,7 +220,7 @@ export function Header() {
               <label htmlFor="site-search-input" className="sr-only">
                 Search
               </label>
-              <Search className="size-5 shrink-0 text-teal" aria-hidden="true" />
+              <Search className="size-5 shrink-0 text-ocean" aria-hidden="true" />
               <input
                 ref={searchInput}
                 id="site-search-input"
@@ -230,7 +230,7 @@ export function Header() {
                 className="h-12 w-full bg-transparent font-display text-2xl text-foam outline-none placeholder:text-fog sm:text-3xl"
               />
               <kbd className="hidden rounded-md border border-white/15 px-2 py-1 text-[0.625rem] font-semibold text-fog sm:block">ESC</kbd>
-              <button type="submit" className="btn btn-teal shrink-0">
+              <button type="submit" className="btn btn-gold shrink-0">
                 Search
               </button>
             </form>
@@ -243,7 +243,7 @@ export function Header() {
               floating ? "left-6 right-6 opacity-100" : "left-0 right-0 opacity-0"
             }`}
           >
-            <span ref={progress} style={{ transform: "scaleX(0)" }} className="block h-full origin-left bg-gradient-to-r from-teal to-gold" />
+            <span ref={progress} style={{ transform: "scaleX(0)" }} className="block h-full origin-left bg-gradient-to-r from-ocean to-gold" />
           </span>
         </div>
       </header>
@@ -306,7 +306,7 @@ export function Header() {
                     <a
                       href={item.href}
                       aria-current={i === ACTIVE ? "page" : undefined}
-                      className={`block px-5 py-3.5 font-display text-xl ${i === ACTIVE ? "text-teal" : "text-foam hover:text-teal"}`}
+                      className={`block px-5 py-3.5 font-display text-xl ${i === ACTIVE ? "text-ocean" : "text-foam hover:text-ocean"}`}
                     >
                       {item.label}
                     </a>
@@ -316,18 +316,18 @@ export function Header() {
             </ul>
           </nav>
           <div className="space-y-4 border-t border-rule p-5">
-            <a href={headerCta.href} onClick={() => setMenuOpen(false)} className="btn btn-teal w-full">
+            <a href={headerCta.href} onClick={() => setMenuOpen(false)} className="btn btn-gold w-full">
               {headerCta.label}
               <ArrowRight className="size-4" aria-hidden="true" />
             </a>
             <ul className="space-y-2 text-xs text-haze">
               <li className="flex items-center gap-2.5">
-                <Clock className="size-3.5 text-teal" aria-hidden="true" />
+                <Clock className="size-3.5 text-ocean" aria-hidden="true" />
                 {contact.openingHours}
               </li>
               <li>
                 <a href={contact.phoneHref} className="flex items-center gap-2.5 hover:text-foam">
-                  <Phone className="size-3.5 text-teal" aria-hidden="true" />
+                  <Phone className="size-3.5 text-ocean" aria-hidden="true" />
                   {contact.phone}
                 </a>
               </li>

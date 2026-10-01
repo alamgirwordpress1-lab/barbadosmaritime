@@ -17,7 +17,7 @@ function ContactRow({ icon: Icon, gold = false, children }: { icon: RowIcon; gol
     <li className="flex items-start gap-3.5">
       <span
         className={`mt-0.5 grid size-8 shrink-0 place-items-center rounded-full border ${
-          gold ? "border-gold/30 bg-gold/10 text-gold" : "border-white/10 bg-white/[0.03] text-teal"
+          gold ? "border-gold/30 bg-gold/10 text-gold" : "border-white/10 bg-white/[0.03] text-ocean"
         }`}
       >
         <Icon className="size-3.5" aria-hidden="true" />
@@ -34,8 +34,8 @@ export function Footer() {
   return (
     <footer className="relative isolate overflow-hidden bg-deep text-sm text-haze">
       {/* horizon line and a low glow under the sign-up card */}
-      <span aria-hidden="true" className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-teal/40 to-transparent" />
-      <span aria-hidden="true" className="absolute left-1/2 top-0 -z-10 h-80 w-[60rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-teal/10 blur-3xl" />
+      <span aria-hidden="true" className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-ocean/40 to-transparent" />
+      <span aria-hidden="true" className="absolute left-1/2 top-0 -z-10 h-80 w-[60rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-ocean/10 blur-3xl" />
 
       <div className="container-site pt-16 lg:pt-20">
         <StayConnected />
@@ -93,7 +93,7 @@ export function Footer() {
                 <a href={link.href} className="group inline-flex items-center transition-colors duration-300 hover:text-foam">
                   <span
                     aria-hidden="true"
-                    className="mr-0 h-px w-0 bg-gradient-to-r from-teal to-gold transition-[width,margin] duration-500 ease-[var(--ease-out-expo)] group-hover:mr-2 group-hover:w-4"
+                    className="mr-0 h-px w-0 bg-gradient-to-r from-ocean to-gold transition-[width,margin] duration-500 ease-[var(--ease-out-expo)] group-hover:mr-2 group-hover:w-4"
                   />
                   {link.label}
                 </a>
@@ -117,7 +117,7 @@ export function Footer() {
             </ContactRow>
             <ContactRow icon={Clock}>{contact.openingHours}</ContactRow>
             <ContactRow icon={Phone}>
-              <a href={contact.phoneHref} className="text-foam transition-colors hover:text-teal">
+              <a href={contact.phoneHref} className="text-foam transition-colors hover:text-ocean">
                 {contact.phone}
               </a>
             </ContactRow>
@@ -128,12 +128,12 @@ export function Footer() {
               </a>
             </ContactRow>
             <ContactRow icon={Mail}>
-              <a href={`mailto:${contact.email}`} className="break-all text-foam transition-colors hover:text-teal">
+              <a href={`mailto:${contact.email}`} className="break-all text-foam transition-colors hover:text-ocean">
                 {contact.email}
               </a>
             </ContactRow>
             <ContactRow icon={LinkedInIcon}>
-              <a href={contact.linkedin} target="_blank" rel="noopener noreferrer" className="text-foam transition-colors hover:text-teal">
+              <a href={contact.linkedin} target="_blank" rel="noopener noreferrer" className="text-foam transition-colors hover:text-ocean">
                 Linkedin
               </a>
             </ContactRow>
@@ -143,7 +143,7 @@ export function Footer() {
         {/* Office */}
         <div>
           <h2 className={heading}>{footer.officeHeading}</h2>
-          <div className="group mt-6 overflow-hidden rounded-2xl border border-white/10 bg-abyss/50 transition-colors duration-500 hover:border-teal/30">
+          <div className="group mt-6 overflow-hidden rounded-2xl border border-white/10 bg-abyss/50 transition-colors duration-500 hover:border-ocean/30">
             <div className="relative">
               <iframe
                 title="Map of the London office, 1 Great Russell Street"
@@ -152,10 +152,10 @@ export function Footer() {
                 referrerPolicy="no-referrer-when-downgrade"
                 className="allow-pointer block h-52 w-full border-0 opacity-75 grayscale invert-[0.9] hue-rotate-180 transition-opacity duration-500 group-hover:opacity-100"
               />
-              {/* the office, marked with a teal signal */}
+              {/* the office, marked with a ocean signal */}
               <span aria-hidden="true" className="pointer-events-none absolute left-1/2 top-1/2 grid size-5 -translate-x-1/2 -translate-y-1/2 place-items-center">
-                <span className="absolute inset-0 animate-ping rounded-full bg-teal/50" />
-                <span className="relative size-2.5 rounded-full bg-teal ring-4 ring-teal/25" />
+                <span className="absolute inset-0 animate-ping rounded-full bg-ocean/50" />
+                <span className="relative size-2.5 rounded-full bg-ocean ring-4 ring-ocean/25" />
               </span>
               <span aria-hidden="true" className="pointer-events-none absolute inset-x-0 bottom-0 h-10 bg-gradient-to-t from-abyss/80 to-transparent" />
             </div>
@@ -169,7 +169,7 @@ export function Footer() {
                 <span className="block text-foam">{contact.address[2]}</span>
                 <span className="text-xs text-fog">{contact.address[3]}</span>
               </span>
-              <span className="flex items-center gap-1.5 text-xs font-semibold text-teal">
+              <span className="flex items-center gap-1.5 text-xs font-semibold text-ocean">
                 {footer.mapLink.label}
                 <ArrowUpRight className="size-3.5" aria-hidden="true" />
               </span>
@@ -192,16 +192,6 @@ export function Footer() {
           </p>
           <p className="text-[0.625rem] font-semibold uppercase tracking-[0.24em] text-fog">{footer.tagline}</p>
         </div>
-      </div>
-
-      {/* Oversized wordmark, cropped by the bottom edge */}
-      <div aria-hidden="true" className="pointer-events-none select-none overflow-hidden">
-        <p
-          data-reveal
-          className="container-site -mb-[0.28em] whitespace-nowrap bg-gradient-to-b from-white/[0.11] via-white/[0.05] to-transparent bg-clip-text text-center font-display text-[clamp(3.25rem,13.4vw,13.5rem)] leading-none text-transparent"
-        >
-          {footer.wordmark}
-        </p>
       </div>
 
       <BackToTop />

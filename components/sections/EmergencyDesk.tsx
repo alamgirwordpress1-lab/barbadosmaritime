@@ -10,13 +10,13 @@ export function EmergencyDesk() {
       className="relative isolate overflow-hidden bg-[linear-gradient(180deg,#023441_0%,#03293a_100%)] py-24 text-center lg:py-32"
     >
       {/* lighthouse glow and slow swells */}
-      <span aria-hidden="true" className="absolute left-1/2 top-0 -z-10 size-[40rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-teal/15 blur-3xl" />
+      <span aria-hidden="true" className="absolute left-1/2 top-0 -z-10 size-[40rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-ocean/15 blur-3xl" />
       <div aria-hidden="true" className="pointer-events-none absolute inset-x-0 bottom-0 -z-10 h-20 overflow-hidden opacity-30">
         <svg viewBox="0 0 800 80" preserveAspectRatio="none" className="absolute bottom-4 h-10 w-[200%] animate-[wave-drift_20s_linear_infinite]" fill="none">
-          <path d="M0 40 Q100 10 200 40 T400 40 T600 40 T800 40" stroke="#e9c46a" strokeWidth="2" />
+          <path d="M0 40 Q100 10 200 40 T400 40 T600 40 T800 40" stroke="#e8c35a" strokeWidth="2" />
         </svg>
         <svg viewBox="0 0 800 80" preserveAspectRatio="none" className="absolute bottom-0 h-10 w-[200%] animate-[wave-drift_14s_linear_infinite_reverse]" fill="none">
-          <path d="M0 40 Q100 70 200 40 T400 40 T600 40 T800 40" stroke="#3cc8b9" strokeWidth="2" />
+          <path d="M0 40 Q100 70 200 40 T400 40 T600 40 T800 40" stroke="#3d7cc8" strokeWidth="2" />
         </svg>
       </div>
 

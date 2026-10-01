@@ -18,10 +18,10 @@ export function Services() {
                 i % 2 ? "md:border-l" : ""
               }`}
             >
-              {/* teal rule that draws along the top on hover */}
+              {/* ocean rule that draws along the top on hover */}
               <span
                 aria-hidden="true"
-                className="absolute inset-x-0 top-0 h-px origin-left scale-x-0 bg-gradient-to-r from-teal to-gold transition-transform duration-700 ease-[var(--ease-out-expo)] group-hover:scale-x-100"
+                className="absolute inset-x-0 top-0 h-px origin-left scale-x-0 bg-gradient-to-r from-ocean to-gold transition-transform duration-700 ease-[var(--ease-out-expo)] group-hover:scale-x-100"
               />
               <span className="font-display text-5xl leading-none text-gold/80 transition-colors duration-500 group-hover:text-gold">
                 {String(i + 1).padStart(2, "0")}
@@ -35,7 +35,7 @@ export function Services() {
                     <a
                       key={part.text}
                       href={part.href}
-                      className="text-teal underline decoration-teal/30 underline-offset-4 transition-colors hover:text-foam"
+                      className="text-ocean underline decoration-ocean/30 underline-offset-4 transition-colors hover:text-foam"
                     >
                       {part.text}
                     </a>

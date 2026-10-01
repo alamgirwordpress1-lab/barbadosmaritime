@@ -29,7 +29,7 @@ function Seal({ className = "" }: { className?: string }) {
         <defs>
           <path id={id} d="M100,100 m-76,0 a76,76 0 1,1 152,0 a76,76 0 1,1 -152,0" />
         </defs>
-        <circle cx="100" cy="100" r="97" fill="none" stroke="rgb(233 196 106 / 0.55)" strokeWidth="1.5" />
+        <circle cx="100" cy="100" r="97" fill="none" stroke="rgb(232 195 90 / 0.55)" strokeWidth="1.5" />
         <circle cx="100" cy="100" r="58" fill="none" stroke="rgb(255 255 255 / 0.18)" strokeWidth="1" />
         <text fill="rgb(255 255 255 / 0.85)" fontSize="12.5" fontWeight="700" letterSpacing="1.5">
           <textPath href={`#${id}`} textLength={470} lengthAdjust="spacing">
@@ -37,7 +37,7 @@ function Seal({ className = "" }: { className?: string }) {
           </textPath>
         </text>
       </svg>
-      <span className="absolute inset-[27%] grid place-items-center rounded-full bg-gold text-abyss shadow-[0_0_30px_rgb(233_196_106/0.35)]">
+      <span className="absolute inset-[27%] grid place-items-center rounded-full bg-gold text-abyss shadow-[0_0_30px_rgb(232_195_90/0.35)]">
         <Anchor className="size-[46%]" strokeWidth={2.25} />
       </span>
     </div>
@@ -174,11 +174,11 @@ export function HeroPanel() {
             />
             <div
               aria-hidden="true"
-              className="absolute left-0 top-[7px] h-[2px] bg-gold shadow-[0_0_10px_rgb(233_196_106/0.6)]"
+              className="absolute left-0 top-[7px] h-[2px] bg-gold shadow-[0_0_10px_rgb(232_195_90/0.6)]"
               style={{ width: "calc(var(--p) * 100%)" }}
             />
             <Ship
-              className="pointer-events-none absolute -top-[30px] w-14 -translate-x-1/2 text-gold drop-shadow-[0_0_10px_rgb(233_196_106/0.45)]"
+              className="pointer-events-none absolute -top-[30px] w-14 -translate-x-1/2 text-gold drop-shadow-[0_0_10px_rgb(232_195_90/0.45)]"
               style={{ left: "calc(var(--p) * 100%)", opacity: "var(--ship-o)" }}
             />
             <ol className="relative grid grid-cols-6 items-stretch">
@@ -193,7 +193,7 @@ export function HeroPanel() {
                       <span
                         className={`size-3 rounded-full transition-all duration-500 ease-[var(--ease-out-expo)] ${
                           on
-                            ? "scale-125 bg-gold shadow-[0_0_0_5px_rgb(233_196_106/0.2),0_0_16px_rgb(233_196_106/0.7)]"
+                            ? "scale-125 bg-gold shadow-[0_0_0_5px_rgb(232_195_90/0.2),0_0_16px_rgb(232_195_90/0.7)]"
                             : passed
                               ? "bg-gold"
                               : "border border-white/50 bg-abyss"
@@ -208,7 +208,7 @@ export function HeroPanel() {
                     <div
                       className={`flex w-full flex-1 flex-col items-center gap-3 rounded-2xl border px-3 py-4 transition-all duration-500 ease-[var(--ease-out-expo)] ${
                         on
-                          ? "-translate-y-1 border-gold bg-white/[0.06] shadow-[0_0_26px_-8px_rgb(233_196_106/0.6)]"
+                          ? "-translate-y-1 border-gold bg-white/[0.06] shadow-[0_0_26px_-8px_rgb(232_195_90/0.6)]"
                           : passed
                             ? "border-gold/35 bg-transparent"
                             : "border-white/20 bg-transparent"

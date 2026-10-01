@@ -28,7 +28,7 @@ export function Process() {
                 Step {String(i + 1).padStart(2, "0")}
               </p>
               <span aria-hidden="true" className="mt-5 block h-px bg-rule">
-                <span className="block h-full w-1/3 bg-gradient-to-r from-teal to-gold transition-[width] duration-700 ease-[var(--ease-out-expo)] group-hover:w-full" />
+                <span className="block h-full w-1/3 bg-gradient-to-r from-ocean to-gold transition-[width] duration-700 ease-[var(--ease-out-expo)] group-hover:w-full" />
               </span>
               <h3 className="mt-7 text-2xl">{step.title}</h3>
               <p className="mt-4 text-sm leading-6">{step.text}</p>

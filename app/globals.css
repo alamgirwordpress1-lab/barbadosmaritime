@@ -1,6 +1,6 @@
 @import "tailwindcss";
 
-/* "Night watch" palette from the client-approved mockup: deep navy water, teal and gold signal lights. */
+/* "Night watch" palette from the client-approved mockup: deep navy water, BMSR blue and gold signal lights. */
 @theme {
   --color-abyss: #000f23; /* deepest background */
   --color-deep: #031d2f; /* alternate section background */
@@ -9,9 +9,9 @@
   --color-foam: #eef4f6; /* headings, primary text */
   --color-haze: #a3b6c3; /* body text */
   --color-fog: #6f889b; /* labels, meta */
-  --color-teal: #3cc8b9;
-  --color-teal-deep: #1daba6;
-  --color-gold: #e9c46a;
+  --color-ocean: #3d7cc8; /* BMSR blue */
+  --color-ocean-deep: #2f68ae;
+  --color-gold: #e8c35a; /* buttons */
   --color-gold-deep: #d7ab43;
   --color-rule: rgb(255 255 255 / 0.1);
 
@@ -78,12 +78,12 @@
   }
 
   ::selection {
-    background: var(--color-teal);
+    background: var(--color-ocean);
     color: var(--color-abyss);
   }
 
   :focus-visible {
-    outline: 2px solid var(--color-teal);
+    outline: 2px solid var(--color-ocean);
     outline-offset: 3px;
   }
 
@@ -142,10 +142,10 @@
     opacity: 0.7;
   }
 
-  /* Italic phrase in a heading, shaded from teal to gold like a sunrise on the water. */
+  /* Italic phrase in a heading, shaded from blue to gold like a sunrise on the water. */
   .accent {
     font-style: italic;
-    background: linear-gradient(95deg, var(--color-teal) 0%, #9fd2a2 55%, var(--color-gold) 100%);
+    background: linear-gradient(95deg, var(--color-ocean) 0%, #8fb0dc 55%, var(--color-gold) 100%);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
@@ -193,19 +193,18 @@
     letter-spacing: 0.18em;
     text-transform: uppercase;
   }
-  .btn-light {
-    --sweep: var(--color-gold);
-    background: var(--color-foam);
+  /* Buttons are always gold: filled for primary actions, outlined for secondary ones. */
+  .btn-gold {
+    --sweep: var(--color-foam);
+    background: var(--color-gold);
     color: var(--color-abyss);
   }
   .btn-ghost {
-    --sweep: rgb(255 255 255 / 0.1);
-    color: var(--color-foam);
-    box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.25);
+    --sweep: var(--color-gold);
+    color: var(--color-gold);
+    box-shadow: inset 0 0 0 1px rgb(232 195 90 / 0.6);
   }
-  .btn-teal {
-    --sweep: var(--color-foam);
-    background: var(--color-teal);
+  .btn-ghost:hover {
     color: var(--color-abyss);
   }
   /* A soft highlight that glides across the button every few seconds. */
@@ -218,11 +217,6 @@
     animation: shine 5s var(--ease-out-expo) infinite;
     pointer-events: none;
   }
-  .btn-gold {
-    --sweep: var(--color-foam);
-    background: var(--color-gold);
-    color: var(--color-abyss);
-  }
 
   /* Endless horizontal ticker: the track holds two identical sets. */
   .marquee-track {
@@ -234,14 +228,14 @@
     animation-play-state: paused;
   }
 
-  /* Small teal text link with an arrow that nudges on hover. */
+  /* Small ocean text link with an arrow that nudges on hover. */
   .link-arrow {
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
     font-size: 0.8125rem;
     font-weight: 600;
-    color: var(--color-teal);
+    color: var(--color-ocean);
     transition: color 0.3s;
   }
   .link-arrow svg {
@@ -272,7 +266,7 @@
     color: var(--color-fog);
   }
   .field:focus {
-    border-color: var(--color-teal);
+    border-color: var(--color-ocean);
     background: rgb(0 15 35 / 0.8);
   }
 

@@ -22,9 +22,9 @@ export function Faq() {
         <div data-stagger className="rounded-xl border border-rule bg-abyss/40 lg:col-span-8">
           {faq.items.map((item, i) => (
             <details key={item.q} open={i === 0} className="faq group border-b border-rule last:border-b-0">
-              <summary className="flex cursor-pointer list-none items-center justify-between gap-6 px-6 py-5 text-[1rem] font-medium text-foam transition-colors hover:text-teal sm:px-8 sm:py-6 [&::-webkit-details-marker]:hidden">
+              <summary className="flex cursor-pointer list-none items-center justify-between gap-6 px-6 py-5 text-[1rem] font-medium text-foam transition-colors hover:text-ocean sm:px-8 sm:py-6 [&::-webkit-details-marker]:hidden">
                 {item.q}
-                <span className="grid size-8 shrink-0 place-items-center rounded-full border border-rule text-teal transition-[rotate,background-color,color] duration-500 ease-[var(--ease-out-expo)] group-open:rotate-45 group-open:bg-teal group-open:text-abyss">
+                <span className="grid size-8 shrink-0 place-items-center rounded-full border border-rule text-ocean transition-[rotate,background-color,color] duration-500 ease-[var(--ease-out-expo)] group-open:rotate-45 group-open:bg-gold group-open:text-abyss">
                   <Plus className="size-4" aria-hidden="true" />
                 </span>
               </summary>

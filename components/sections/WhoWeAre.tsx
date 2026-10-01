@@ -54,7 +54,7 @@ export function WhoWeAre() {
                 className={`flex flex-col-reverse pb-2 pt-6 ${i > 0 ? "sm:border-l sm:border-rule sm:pl-6" : ""} ${i % 2 ? "border-l border-rule pl-6" : ""}`}
               >
                 <dt className="mt-3 text-xs leading-snug text-fog">{f.label}</dt>
-                <dd className="font-display text-4xl leading-none text-teal">{f.value}</dd>
+                <dd className="font-display text-4xl leading-none text-ocean">{f.value}</dd>
               </div>
             ))}
           </dl>

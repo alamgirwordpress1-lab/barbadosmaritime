@@ -10,13 +10,13 @@ import { HeroPanel } from "./HeroPanel";
 
 const SLIDE_SECONDS = 6.5;
 
-const TEAL = [0x3c, 0xc8, 0xb9];
-const GOLD = [0xe9, 0xc4, 0x6a];
-const mix = (t: number) => `rgb(${TEAL.map((c, i) => Math.round(c + (GOLD[i] - c) * t)).join(" ")})`;
+const BLUE = [0x3d, 0x7c, 0xc8];
+const GOLD = [0xe8, 0xc3, 0x5a];
+const mix = (t: number) => `rgb(${BLUE.map((c, i) => Math.round(c + (GOLD[i] - c) * t)).join(" ")})`;
 
 /**
  * Headline split into masked words so each word can rise into view. The accent line is
- * italic and shaded word by word from teal to gold (a gradient per line would not survive
+ * italic and shaded word by word from ocean to gold (a gradient per line would not survive
  * the per-word masks).
  */
 function MaskedWords({ lines, accent }: { lines: string[]; accent?: number }) {
@@ -46,7 +46,7 @@ function MaskedWords({ lines, accent }: { lines: string[]; accent?: number }) {
 
 function SlideArrows({ onPrev, onNext }: { onPrev: () => void; onNext: () => void }) {
   const cls =
-    "grid size-11 place-items-center rounded-full border border-white/25 text-foam transition-colors hover:border-teal hover:bg-teal hover:text-abyss";
+    "grid size-11 place-items-center rounded-full border border-white/25 text-foam transition-colors hover:border-gold hover:bg-gold hover:text-abyss";
   return (
     <div className="flex items-center gap-2">
       <button type="button" onClick={onPrev} aria-label="Previous slide" className={cls}>
@@ -276,7 +276,7 @@ export function Hero() {
         </div>
       ))}
 
-      {/* Night-watch grade: a teal-navy tint over every slide, then washes for legibility */}
+      {/* Night-watch grade: a ocean-navy tint over every slide, then washes for legibility */}
       <div aria-hidden="true" className="pointer-events-none absolute inset-0 z-[3] bg-[#0a3a52] opacity-60 mix-blend-color" />
       <div
         aria-hidden="true"
@@ -324,7 +324,7 @@ export function Hero() {
                     </p>
                   )}
                   <div data-fade className="mt-9 flex flex-wrap items-center gap-3">
-                    <a href={slide.cta.href} className="btn btn-light">
+                    <a href={slide.cta.href} className="btn btn-gold">
                       {slide.cta.label}
                       <ArrowRight className="size-4" aria-hidden="true" />
                     </a>
@@ -363,7 +363,7 @@ export function Hero() {
                       active === i ? "w-14" : "w-7 hover:bg-white/60"
                     }`}
                   >
-                    <span data-tab-fill={i} style={{ transform: "scaleX(0)" }} className="block h-full origin-left bg-gradient-to-r from-teal to-gold" />
+                    <span data-tab-fill={i} style={{ transform: "scaleX(0)" }} className="block h-full origin-left bg-gradient-to-r from-ocean to-gold" />
                   </span>
                 </button>
               ))}

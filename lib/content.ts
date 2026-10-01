@@ -86,7 +86,7 @@ export const mainNav: NavItem[] = [
 export type HeroSlide = {
   eyebrow: string;
   title: string[];
-  /** Index of the title line set in the italic teal-to-gold accent. */
+  /** Index of the title line set in the italic ocean-to-gold accent. */
   accent?: number;
   lead?: string;
   cta: { label: string; href: string };
@@ -472,7 +472,6 @@ export const footer = {
   blurb: "We are here to help with any query — registration, fees, certificates or an urgent dispensation.",
   tagline: "Executive Agents for and on behalf of the Barbados Government",
   mapLink: { label: "Open in Google Maps", href: "https://www.google.com/maps/search/?api=1&query=1+Great+Russell+Street+London+WC1B+3ND" },
-  wordmark: "Barbados Maritime",
   linksHeading: "Important Links",
   officeHeading: "London Office",
   links: [

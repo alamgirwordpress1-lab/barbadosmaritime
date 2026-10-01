@@ -2,7 +2,7 @@
 
 A redesign of the barbadosmaritime.com homepage, built with Next.js 16 (App Router), React 19, Tailwind CSS v4, GSAP (scroll and slider animation), Three.js (the "sea of light" at the foot of the hero, `components/motion/WaveField.tsx`) and Lenis (smooth scrolling).
 
-The look follows the client-approved "night watch" mockup: deep navy, teal and gold accents, Instrument Serif headings with an italic teal-to-gold phrase, and Manrope for text. Every section of the current homepage is kept (restyled), and the mockup's new sections are added: credentials ticker, four-step process, FAQ, enquiry form and emergency desk.
+The look follows the client-approved "night watch" mockup: deep navy with BMSR blue (#3d7cc8) accents, gold (#E8C35A) for every button, Instrument Serif headings with an italic blue-to-gold phrase, and Manrope for text. Colours live in `app/globals.css` (`--color-ocean` is the blue, `--color-gold` the button gold). Every section of the current homepage is kept (restyled), and the mockup's new sections are added: credentials ticker, four-step process, FAQ, enquiry form and emergency desk.
 
 ## Run it
 

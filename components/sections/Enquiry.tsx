@@ -35,13 +35,13 @@ export function Enquiry() {
           <ul data-stagger className="mt-10 space-y-3 text-sm">
             <li>
               <a href={contact.phoneHref} className="inline-flex items-center gap-3 text-haze transition-colors hover:text-foam">
-                <Phone className="size-4 text-teal" aria-hidden="true" />
+                <Phone className="size-4 text-ocean" aria-hidden="true" />
                 {contact.phone}
               </a>
             </li>
             <li>
               <a href={`mailto:${contact.email}`} className="inline-flex items-center gap-3 text-haze transition-colors hover:text-foam">
-                <Mail className="size-4 text-teal" aria-hidden="true" />
+                <Mail className="size-4 text-ocean" aria-hidden="true" />
                 {contact.email}
               </a>
             </li>
@@ -51,7 +51,7 @@ export function Enquiry() {
         <div data-reveal className="rounded-xl border border-rule bg-harbor/60 p-6 sm:p-8 lg:col-span-7">
           {sent ? (
             <p role="status" className="flex min-h-64 flex-col items-center justify-center gap-4 text-center font-display text-3xl text-foam">
-              <CircleCheck className="size-10 text-teal" aria-hidden="true" />
+              <CircleCheck className="size-10 text-ocean" aria-hidden="true" />
               {enquiry.thanks}
             </p>
           ) : (
@@ -93,7 +93,7 @@ export function Enquiry() {
                 <textarea name="details" rows={4} placeholder={enquiry.placeholders.details} className="field resize-y" />
               </label>
               <div className="sm:col-span-2">
-                <button type="submit" className="btn btn-teal">
+                <button type="submit" className="btn btn-gold">
                   {enquiry.submit}
                   <ArrowRight className="size-4" aria-hidden="true" />
                 </button>

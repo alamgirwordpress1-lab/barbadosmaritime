@@ -45,7 +45,7 @@ export function Notices() {
                 <span className="text-[1.0625rem] font-medium leading-snug text-foam transition-transform duration-500 ease-[var(--ease-out-expo)] group-hover:translate-x-1.5">
                   {row.title}
                 </span>
-                <span className="flex items-center gap-2 text-xs font-semibold text-haze transition-colors group-hover:text-teal">
+                <span className="flex items-center gap-2 text-xs font-semibold text-haze transition-colors group-hover:text-ocean">
                   {row.link.label}
                   <ArrowRight className="size-3.5 transition-transform duration-500 group-hover:translate-x-1" aria-hidden="true" />
                 </span>

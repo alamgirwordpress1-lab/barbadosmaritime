@@ -39,7 +39,7 @@ function DateTile({ date, dateTime }: { date: string; dateTime: string }) {
 
 function BulletinCard({ post }: { post: Post }) {
   return (
-    <article className="group relative flex h-full flex-col rounded-xl border border-rule bg-harbor p-3 transition-[translate,border-color,box-shadow] duration-500 ease-[var(--ease-out-expo)] hover:-translate-y-2 hover:border-teal/40 hover:shadow-float">
+    <article className="group relative flex h-full flex-col rounded-xl border border-rule bg-harbor p-3 transition-[translate,border-color,box-shadow] duration-500 ease-[var(--ease-out-expo)] hover:-translate-y-2 hover:border-ocean/40 hover:shadow-float">
       <div className="relative aspect-[16/11] overflow-hidden rounded-lg bg-deep">
         <Image
           src={post.image}
@@ -49,7 +49,7 @@ function BulletinCard({ post }: { post: Post }) {
           sizes="(min-width: 1024px) 460px, (min-width: 640px) 50vw, 85vw"
           className="object-cover transition-transform duration-[1.2s] ease-[var(--ease-out-expo)] group-hover:scale-[1.06]"
         />
-        <span className="absolute left-3 top-3 rounded-full bg-abyss/70 px-3 py-1 text-[0.625rem] font-semibold uppercase tracking-[0.22em] text-teal backdrop-blur">
+        <span className="absolute left-3 top-3 rounded-full bg-abyss/70 px-3 py-1 text-[0.625rem] font-semibold uppercase tracking-[0.22em] text-ocean backdrop-blur">
           {post.category}
         </span>
       </div>
@@ -57,7 +57,7 @@ function BulletinCard({ post }: { post: Post }) {
       <div className="relative flex flex-1 flex-col px-4 pb-4 pt-7">
         <DateTile date={post.date} dateTime={post.dateTime} />
         <p className="flex items-center gap-2 text-xs font-semibold text-fog">
-          <span className="grid size-6 place-items-center rounded-full border border-rule text-teal">
+          <span className="grid size-6 place-items-center rounded-full border border-rule text-ocean">
             <User className="size-3.5" aria-hidden="true" />
           </span>
           {post.author}
@@ -66,7 +66,7 @@ function BulletinCard({ post }: { post: Post }) {
           <a
             href={post.href}
             draggable={false}
-            className="transition-colors after:absolute after:inset-0 after:rounded-xl group-hover:text-teal"
+            className="transition-colors after:absolute after:inset-0 after:rounded-xl group-hover:text-ocean"
           >
             {post.title}
           </a>
@@ -74,10 +74,10 @@ function BulletinCard({ post }: { post: Post }) {
         <p className="mb-6 mt-3 line-clamp-2 text-sm leading-6">{post.excerpt}</p>
         <span
           aria-hidden="true"
-          className="mt-auto inline-flex w-fit items-center gap-2.5 text-xs font-semibold text-haze transition-colors duration-500 group-hover:text-teal"
+          className="mt-auto inline-flex w-fit items-center gap-2.5 text-xs font-semibold text-haze transition-colors duration-500 group-hover:text-ocean"
         >
           Read More
-          <span className="grid size-8 place-items-center rounded-full border border-rule transition-[rotate,background-color,border-color,color] duration-500 ease-[var(--ease-out-expo)] group-hover:rotate-45 group-hover:border-teal group-hover:bg-teal group-hover:text-abyss">
+          <span className="grid size-8 place-items-center rounded-full border border-rule transition-[rotate,background-color,border-color,color] duration-500 ease-[var(--ease-out-expo)] group-hover:rotate-45 group-hover:border-gold group-hover:bg-gold group-hover:text-abyss">
             <ArrowUpRight className="size-3.5" />
           </span>
         </span>
@@ -193,11 +193,11 @@ export function Bulletins() {
   };
 
   const arrow =
-    "grid size-11 place-items-center rounded-full border border-white/25 text-foam transition-colors duration-300 hover:border-teal hover:bg-teal hover:text-abyss disabled:pointer-events-none disabled:opacity-30";
+    "grid size-11 place-items-center rounded-full border border-white/25 text-foam transition-colors duration-300 hover:border-gold hover:bg-gold hover:text-abyss disabled:pointer-events-none disabled:opacity-30";
 
   return (
     <section aria-labelledby="bulletins-heading" className="relative isolate overflow-hidden bg-abyss py-24 lg:py-32">
-      <span aria-hidden="true" className="absolute -right-40 -top-40 -z-10 size-[36rem] rounded-full bg-teal/10 blur-3xl" />
+      <span aria-hidden="true" className="absolute -right-40 -top-40 -z-10 size-[36rem] rounded-full bg-ocean/10 blur-3xl" />
       <span aria-hidden="true" className="absolute -left-48 top-1/4 -z-10 size-[26rem] rounded-full bg-gold/10 blur-3xl" />
 
       <div className="container-site">
@@ -262,7 +262,7 @@ export function Bulletins() {
           {/* "Drag" bubble: the outer span follows the pointer (GSAP), the inner one scales in and out (CSS) */}
           <span ref={bubble} aria-hidden="true" className="pointer-events-none absolute left-0 top-0 z-20 -ml-10 -mt-10 size-20">
             <span
-              className={`grid size-full place-items-center rounded-full bg-teal text-[0.625rem] font-bold uppercase tracking-[0.2em] text-abyss shadow-[0_14px_30px_-12px_rgb(0_0_0/0.7)] transition-[scale,opacity] duration-300 ${
+              className={`grid size-full place-items-center rounded-full bg-gold text-[0.625rem] font-bold uppercase tracking-[0.2em] text-abyss shadow-[0_14px_30px_-12px_rgb(0_0_0/0.7)] transition-[scale,opacity] duration-300 ${
                 bubbleOn ? (dragging ? "scale-75 opacity-100" : "scale-100 opacity-100") : "scale-0 opacity-0"
               }`}
             >
@@ -273,7 +273,7 @@ export function Bulletins() {
 
         {/* Scroll position */}
         <div aria-hidden="true" className="mt-12 h-px overflow-hidden bg-rule">
-          <span ref={thumb} className="block h-full bg-gradient-to-r from-teal to-gold transition-transform duration-200" />
+          <span ref={thumb} className="block h-full bg-gradient-to-r from-ocean to-gold transition-transform duration-200" />
         </div>
       </div>
     </section>
